@@ -1,0 +1,35 @@
+<% if (pagination == 2){ %>
+  <% page.posts.each(function(post){ %>
+    <div class="post">
+      <a href="<%- config.root + post.path %> "  class="post-title">
+      <h1><%- titlecase(post.title) %></h1>
+      </a>
+      <div class="post-info">
+        <span class="post-data">
+          <i class="fa fa-calendar" aria-label="Data de publicação"></i> <%- date(post.date, 'DD/MM/YYYY') %>
+        </span>	
+        <span class="post-tags">
+          <% if (post.tags && post.tags.length){ %>
+            <%- list_tags(post.tags, {
+              show_count: false,
+              class: 'post-tags'
+            }) %>
+          <% } %>
+        </span>	
+      </div>
+      
+      <div class="post-resume"><%- truncate(post.content, {length: 300, omission: '...'}) %></div>
+      <a href="<%- config.root + post.path %> " class="post-btn">Leia mais</a>
+    </div>
+  <% }) %>
+<% } %>
+<% if (page.total > 1){ %>
+  <nav id="page-nav">
+    <% var prev_text = __(' Anterior '); 
+    var next_text = __('Próximo ')%>
+    <%- paginator({
+      prev_text: prev_text,
+      next_text: next_text
+    }) %>
+  </nav>
+<% } %>

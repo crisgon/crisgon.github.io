@@ -1,0 +1,22 @@
+<%- partial('_partial/head')%>
+<body <% if(is_home()){ %>class="home-body"<% } %>>
+	<main class="container">
+		<nav class="mobile-header">
+			<button class="mobile-nav-button" data-js="open-nav">
+				<i class="fa fa-bars" aria-Label="Menu"></i>
+			</button>
+		</nav>
+		<%- partial('_partial/header', {title: 'Cris', color: 'white'})%>
+		
+		<section class="content">
+			<%- body%>
+			<%- partial('_partial/footer')%>
+		</section>
+		
+	</main>
+	<%- js('js/index.js') %>
+	<%- js('js/nav.js') %>
+	<%- js('https://use.fontawesome.com/3a8d059f5c.js') %>
+</body>
+</html>
+

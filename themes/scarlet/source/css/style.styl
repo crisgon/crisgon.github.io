@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu')
+@import '_util/reset'
+@import '_util/_variables'
+@import '_partial/article'
+@import '_partial/tags'
+@import '_partial/header'	
+@import '_partial/footer'	
+@import '_partial/pagination'
+@import '_partial/card'
+@import '_partial/highlight'
+ 
+body
+	background-color #fff
+	font-family 'Ubuntu', sans-serif
+	overflow-x hidden
+
+a 
+	color: $color-primary
+
+.home-body
+	background-color $color-secondary
+	
+.container
+	-ms-display grid 
+	-ms-grid-template-columns 1fr
+	display grid 
+	grid-template-columns 1fr
+	position relative
+	
+	.mobile-header
+		box-sizing border-box
+		padding 2em 2em  0 2em
+
+		.mobile-nav-button
+			color $font-default-color
+			background-color transparent
+			border 0
+			font-size 2.5em
+
+// Content
+	.content
+		grid-column 1
+		box-sizing border-box
+		padding 2em
+		padding-top 1em
+		background-color inherit
+		position relative
+
+		.home-link
+			text-decoration none
+			font-size 1.2em
+			font-weight bold
+			color $font-default-color
+			position relative
+			top 20px
+			z-index 1
+
+			i 
+				color $color-primary
+				margin-right .5em
+
+// Post
+	.post
+		width 100%
+		min-height 250px
+		display flex
+		flex-direction column
+		align-items flex-start
+		list-style none
+		box-sizing border-box
+		padding 1em
+		margin 1em 0 0 0
+		background-color #fff
+		color $font-default-color
+		border-radius 10px
+		position relative
+
+		.post-title
+			font-size 1.8em
+			line-height 1.5em
+			text-decoration none
+			color $color-primary
+
+		.post-info
+			display flex
+			flex-direction column
+
+			.post-data
+			.post-tags
+				margin .5em 0
+
+		.post-tags
+			.post-tags-list-item
+				&:nth-child(1)
+					margin-left -2em
+			
+		.post-resume
+			font-size 1.2em
+			line-height 1.4em
+			padding .5em 0 0 0
+			border-top 1px solid $color-secondary
+			
+		.post-btn
+			align-self flex-end
+			font-size 1.1em 
+			color #fff
+			text-decoration none
+			background-color $color-primary
+			border 0
+			border-bottom 4px solid $color-primary-dark
+			border-radius 5px
+			padding .6em 1em
+			margin .5em 0
+
+//Medias
+
+@media(min-width 768px)
+	.container
+		grid-template-columns 250px 1fr
+		.mobile-header
+			display none
+			
+		.header 
+			width 250px
+			height 100vh
+			left 0
+			grid-column 1/2
+
+			.close-nav
+				display none
+
+	.content 
+		grid-column 2/4
+		padding-top 0
+		background-color inherit
+
+	.post-info
+		flex-direction row
+
+		.post-tags-list
+			margin-left 2em
+		
+
+
+@media(min-width 960px)
+	.container
+		grid-template-columns 300px 1fr
+
+		.header 
+			width 300px
