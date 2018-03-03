@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#e74c3c">
+	<link rel="icon" href="/images/favicon.ico" />
+	
+		<title>Usando Arrays com JavaScript</title>
+			
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body >
+	<main class="container">
+		<nav class="mobile-header">
+			<button class="mobile-nav-button" data-js="open-nav">
+				<i class="fa fa-bars" aria-Label="Menu"></i>
+			</button>
+		</nav>
+			<header class="header" data-js="nav">
+		<button class="close-nav" data-js="close-nav"><i class="fa fa-times" aria-hidden="true"></i></button>
+		<img src="/images/profile.jpg" alt="Cristiano Gonçalves" class="profile">
+		<a href="/">
+			<h1 class="site-name">Cristiano Gonçalves</h1>
+		</a>
+	
+		<nav class="navigation">
+			<ul class="navigation-list">
+				<li class="navigation-link">
+					<a href="/">Home</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/about">Sobre</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/projects">Projetos</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/experiments">Experimentos</a>
+				</li>
+			</ul>
+		</nav> 
+
+		<ul class="social-list">
+			<li class="social-icon">
+				<a href="https://www.facebook.com/cris.gonn" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://twitter.com/Gonkristiano" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://www.linkedin.com/in/cristiano-gonçalves-12a395105/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://github.com/crisgon/" target="_blank"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://codepen.io/crisgon/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+	</header>
+		
+		<section class="content">
+			<a href="/index.html" class="home-link">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>Voltar
+</a>
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-header-title">Usando Arrays com JavaScript</h1>  
+    <div class="infos">
+      <time datetime="Thu Mar 01 2018 22:57:31 GMT-0300" class="post-header-date">
+        <i class="fa fa-calendar" aria-label="Data de publicação"></i> 01/03/2018  |
+        <i class="fa fa-clock-o" aria-label="Tempo de leitura"></i> 12 minutos de leitura
+      </time>
+        
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </div>
+  </header>
+  <p class="post-content">
+    <p>Vamos supor que estou criando um programa e que preciso armazenar o nome de 10 pessoas. A primeira coisa que podemos pensar é em criar uma variável para cada nome, simples, não? <strong>Não!!</strong> Criar uma variável para cada nome é gastar recursos desnecessários, pois estamos alocando memória 10 vezes e ainda vamos ter um certo trabalho para manipular 10 variáves que no fim das contas servem para mesma coisa.</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Bad Code</span></span><br><span class="line"><span class="keyword">var</span> nome1 = <span class="string">'Cristiano'</span>;</span><br><span class="line"><span class="keyword">var</span> nome2 = <span class="string">'Maria'</span>;</span><br><span class="line"><span class="keyword">var</span> nome3 = <span class="string">'João'</span>;</span><br><span class="line"><span class="keyword">var</span> nome4 = <span class="string">'Cirilo'</span>;</span><br><span class="line"><span class="keyword">var</span> nome5 = <span class="string">'Joaquina'</span>;</span><br><span class="line"><span class="keyword">var</span> nome6 = <span class="string">'Manuel'</span>;</span><br><span class="line"><span class="keyword">var</span> nome7 = <span class="string">'Valentina'</span>;</span><br><span class="line"><span class="keyword">var</span> nome8 = <span class="string">'Enzo'</span>;</span><br><span class="line"><span class="keyword">var</span> nome9 = <span class="string">'Samanta'</span>;</span><br><span class="line"><span class="keyword">var</span> nome10 = <span class="string">'Suelen'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Uma-das-melhores-alternativas-seria-utilizar-um-array-com-todos-esses-nomes"><a href="#Uma-das-melhores-alternativas-seria-utilizar-um-array-com-todos-esses-nomes" class="headerlink" title="Uma das melhores alternativas seria utilizar um array com todos esses nomes."></a>Uma das melhores alternativas seria utilizar um array com todos esses nomes.</h3><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Good code</span></span><br><span class="line"><span class="keyword">var</span> nomes = [<span class="string">'Cristiano'</span>,<span class="string">'Maria'</span>,<span class="string">'João'</span>,<span class="string">'Cirilo'</span>,<span class="string">'Joaquina'</span>,<span class="string">'Manuel'</span>,<span class="string">'Valentina'</span>,<span class="string">'Enzo'</span>,<span class="string">'Samanta'</span>,<span class="string">'Suelen'</span>];</span><br></pre></td></tr></table></figure>
+<p>Basicamente, os arrays são mapas que possuem posições numeradas e cada posição pode guardar um determinado valor de qualquer tipo. Vale lembrar que no Javascript os arrays não são arrays de verdade, eles não possuem um tamanho finito alocado na memória, como em algumas linguagens, os arrays dos javascript são objetos, com algumas regalias, pois oferecem formas de acessar suas propriedades por meio de índices e contam com algumas métodos para manipulação do mesmo.  A performance dos arrays em javascript é um pouco inferior a de outras linguagens, porém isso é compensado com sua facilidade de uso.</p>
+<h4 id="Criando-um-array"><a href="#Criando-um-array" class="headerlink" title="Criando um array"></a>Criando um array</h4><p>Podemos declarar um array das seguintes formas<br><figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Na forma literal</span></span><br><span class="line"><span class="keyword">var</span> meuArray = []; <span class="comment">// Com um array vazio</span></span><br><span class="line"><span class="keyword">var</span> meuArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="string">'string'</span>]; <span class="comment">// Com uma coleção de dados</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Com o construtor new Array</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> meuArray = <span class="keyword">new</span> <span class="type">Array</span>(); <span class="comment">// Array vazio</span></span><br><span class="line"><span class="keyword">var</span> meuArray = <span class="keyword">new</span> <span class="type">Array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="string">'string'</span>); <span class="comment">// Com uma coleção de dados</span></span><br><span class="line"><span class="keyword">var</span> meuArray = <span class="keyword">new</span> <span class="type">Array</span>(<span class="number">10</span>); <span class="comment">// Ou passando o tamanho do array</span></span><br></pre></td></tr></table></figure></p>
+<div class="obs">OBS: Podemos passar qual o tamanho do array, mas esse não é o tamanho máximo, como ocorre em outras linguagens, pois os arrays do javascript não possuem um tamanho máximo, possuem apenas um tamanho inicial.<br></div>
+
+<h4 id="Alimentando-um-array"><a href="#Alimentando-um-array" class="headerlink" title="Alimentando um array"></a>Alimentando um array</h4><p>Antes de alimentar um array é preciso entender que a contagem de posições de um array começa do zero, ou seja, a primeira posição de um array é o 0, a segunda é o 1 e assim por diante.</p>
+<p>Podemos alimentar um array na hora da sua criação, ou simplesmente indicando uma posição e qual valor queremos armazenar. </p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> carros = []; ou <span class="keyword">var</span> carros = <span class="keyword">new</span> <span class="type">Array</span>();</span><br><span class="line">carros[<span class="number">1</span>] = <span class="string">'Pálio'</span>;</span><br><span class="line">carros[<span class="number">7</span>] = <span class="string">'Ka'</span>;</span><br></pre></td></tr></table></figure>
+<p>Algo para se observar, é que não precisamos seguir a ordem das posições para colocar um valor, podemos simplesmente colocar um valor na posição 1 e depois um na posição 7 e teremos o seguinte resultado:<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[ ,'Pálio', , , , , ,'Ka']</span><br></pre></td></tr></table></figure></p>
+<p>O que aconteceu é que as outras posições carregam o valor undefined, isso indica que elas estão “vazias”, pois ainda não receberam nenhum valor. Veja uma representação visual do mesmo array.</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[undefined, 'Pálio', undefined, undefined, undefined, undefined, undefined,'Ka']</span><br></pre></td></tr></table></figure>
+<p>Existem outras formas de alimentar e manipular um array, veremos algumas com a API do array.</p>
+<h4 id="API-do-array"><a href="#API-do-array" class="headerlink" title="API do array"></a>API do array</h4><p>Esses são apenas alguns dos métodos presentes no objeto array, coloquei os que são considerados mais usuais, porém você pode acessar a lista com todos os métodos no <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">site da Mozila</a>.</p>
+<ul>
+<li><h4 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h4><p>  Retorna o próprio array ou pode retornar o valor de alguma posição.</p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">var meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">meuArray.valueOf(); <span class="comment">// [1,2,3,4]</span></span><br><span class="line">meuArray[<span class="number">1</span>].valueOf(); <span class="comment">// [2]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="lenght"><a href="#lenght" class="headerlink" title="lenght"></a>lenght</h4><p>  Esse não é um metódo do array, é uma propriedade que contém o tamanho do array.</p>
+  <figure class="highlight glsl"><table><tr><td class="code"><pre><span class="line">meuArray.<span class="built_in">length</span>; <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="push"><a href="#push" class="headerlink" title="push()"></a>push()</h4><p>  Essa é um dos métodos mais utilizados, ele é usado para adicionar itens ao final do array.</p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">meuArray.push('casa'); <span class="comment">// [1,2,3,4, 'casa']</span></span><br></pre></td></tr></table></figure>
+<p>  Podemos adicionar quantos valores quisermos em um único push.</p>
+</li>
+<li><h4 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h4><p>  Remove o ultimo item de um array.</p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>, 'casa'];</span><br><span class="line">meuArray.pop(); <span class="comment">// [1,2,3,4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="unshift"><a href="#unshift" class="headerlink" title="unshift()"></a>unshift()</h4><p>  Adiciona um item no inicio do array. Bem semelhante ao push.</p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">meuArray.unshifit('Primeiro'); <span class="comment">// ['Primeiro', 1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="shift"><a href="#shift" class="headerlink" title="shift()"></a>shift()</h4><p>  Remove o primeiro item de um array. Semelhante ao pop.</p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = ['Primeiro', <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">meuArray.shift(); <span class="comment">// [1,2,3,4]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h4><p>  Retorna a posição de um item, caso ele não exista o retorno é -1.</p>
+  <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">meuArray.push(<span class="string">'casa'</span>); <span class="regexp">//</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>, <span class="string">'casa'</span>]</span><br><span class="line">meuArray.indexOf(<span class="string">'casa'</span>); <span class="regexp">//</span> <span class="number">4</span></span><br><span class="line">meuArray.indexOf(<span class="string">'batata'</span>); <span class="regexp">//</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h4><p>  O splice tem 3 utilidades e cada utilidade vai depender dos argumentos que forem passados.</p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>, 'batata'];</span><br></pre></td></tr></table></figure>
+<p>  <strong>Remover:</strong></p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray.splice(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">// [1,4, 'batata']</span></span><br></pre></td></tr></table></figure>
+<p>  O primeiro argumento passado foi a posição onde vai começar a remoção e o segundo foi a quantidade de itens a ser removido. No nosso caso foram removidos 2 itens a partir da posição 1.<br>  Também podemos passar só o primeiro argumento, isso vai remover todos os itens da posição 1 em diante.</p>
+  <figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">meuArray.splice<span class="comment">(1)</span>; <span class="comment">// [1]</span></span><br></pre></td></tr></table></figure>
+<p>  <strong>Substituir:</strong></p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray  = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">meuArray.splice(<span class="number">1</span>,<span class="number">1</span>, 'casa'); <span class="comment">// [1, 'casa', 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>  Aqui passamos 3 argumentos. O primeiro é a posição inicial, o segundo é a quantidade de itens que vão ser substituidos e o terceiro é novo valor que será incluido.</p>
+<p>  <strong>Adicionar em qualquer lugar</strong></p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">meuArray.splice(<span class="number">1</span>,<span class="number">0</span>, 'manga'); <span class="comment">// [1,'manga', 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>  Os argumentos passados são os mesmo, só que nesse casos não queremos remover nenhum item, por isso o segundo argumento foi 0. Logo, o item ‘manga’ foi para a posição 1 e todos os outros itens foram pra sua posição atual + 1.<br>  O número 2 estava na posição 1 e agora tá na 2, o 3 estava na 2 e agora está na 3 e o 4 estava na 3 e agora está na 4.</p>
+</li>
+</ul>
+<ul>
+<li><h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h4><p>  Uma das muitas formas de percorrer um array, ele é uma ótima alternativa para substituir o clássico for.</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//Percorrendo com o for:</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; meuArray.lenght; i ++ &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(meuArray[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Utilizando o forEach:</span></span><br><span class="line">meuArray.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(item);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4><p>  Utilizado para fazer uma busca de forma simples. A função retorna os itens que estiverem de acordo com a condição passada.</p>
+  <figure class="highlight smali"><table><tr><td class="code"><pre><span class="line">meuArray = ['Batman', 'Superman', 'Capitão'];</span><br><span class="line">// Buscar Batman no array</span><br><span class="line">meuArray.filter(function(item)&#123;</span><br><span class="line"><span class="built_in">	return </span>item === 'Batman';</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// Retorno ['Batman']</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h4><p>  Pode ser usado quando queremos verificar se todos os itens do array atendem a uma determinada condição.</p>
+  <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">meuArray = [</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Cristiano'</span>, <span class="string">idade:</span> <span class="number">22</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Marcia'</span>, <span class="string">idade:</span> <span class="number">27</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Alan'</span>, <span class="string">idade:</span> <span class="number">12</span>&#125;</span><br><span class="line">];</span><br><span class="line"><span class="comment">//Verificar se todas as pessoas tem uma idade maior que 18</span></span><br><span class="line">meuArray.every(function(item)&#123;</span><br><span class="line">	<span class="keyword">return</span> item.idade &gt; <span class="number">18</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Retorno falso</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h4><p>  Ao contrário do every, o some retorna true se ao menos um item atender as condições passadas.</p>
+  <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">meuArray = [</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Cristiano'</span>, <span class="string">idade:</span> <span class="number">22</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Marcia'</span>, <span class="string">idade:</span> <span class="number">27</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Alan'</span>, <span class="string">idade:</span> <span class="number">12</span>&#125;</span><br><span class="line">];</span><br><span class="line"><span class="comment">//Verificar se alguma pessoas tem uma idade maior que 18</span></span><br><span class="line">meuArray.some(function(item)&#123;</span><br><span class="line">	<span class="keyword">return</span> item.idade &gt; <span class="number">18</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Retorno Verdadeiro</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h4><p>  O map pode ser utilizado quando queremos criar um novo array a partir de outro, mas com algumas condições.</p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>];</span><br><span class="line"></span><br><span class="line">var novoArray = meuArray.map(function(item)&#123;</span><br><span class="line">	return item * <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// novArray  [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h4><p>  O reduce tem basicamente a função de reduzir o valor a um único valor. Isso é feito com uma condição e inicialmente com 2 argumentos, acumulador e valor atual.</p>
+  <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">meuArray = [</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Cristiano'</span>, <span class="string">idade:</span> <span class="number">22</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Marcia'</span>, <span class="string">idade:</span> <span class="number">27</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Alan'</span>, <span class="string">idade:</span> <span class="number">12</span>&#125;</span><br><span class="line">];</span><br><span class="line"><span class="comment">// Retonar a soma das idades de todas as pessoas</span></span><br><span class="line">meuArray.reduce(function(prev, cur)&#123;</span><br><span class="line">	<span class="keyword">return</span> prev + cur.idade;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Retorno  <span class="comment">// "[object Object]2712"]</span></span><br></pre></td></tr></table></figure>
+<p>  Tivemos esse retorno porque inicialmente o prev tem o valor undefine e é preciso definir em que valor iniciará a operação, no nosso caso será em 0.</p>
+  <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">meuArray.reduce(<span class="function"><span class="keyword">function</span><span class="params">(prev, cur)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> prev + cur.idade;</span><br><span class="line">&#125;,<span class="number">0</span>);</span><br><span class="line"><span class="comment">//Retorno  61</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h4><p>  O concat é utilizado para concatenar dois arrays ou mais.</p>
+  <figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">meuArray = [</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Cristiano'</span>, <span class="string">idade:</span> <span class="number">22</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Marcia'</span>, <span class="string">idade:</span> <span class="number">27</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Alan'</span>, <span class="string">idade:</span> <span class="number">12</span>&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">var outroArray = [</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Marta'</span>, <span class="string">idade:</span> <span class="number">45</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Ananda'</span>, <span class="string">idade:</span> <span class="number">17</span>&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">novoArray = meuArray.concat(outroArray);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//Resultado do novoArray </span></span><br><span class="line"> [</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Cristiano'</span>, <span class="string">idade:</span> <span class="number">22</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Marcia'</span>, <span class="string">idade:</span> <span class="number">27</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Alan'</span>, <span class="string">idade:</span> <span class="number">12</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Marta'</span>, <span class="string">idade:</span> <span class="number">45</span>&#125;,</span><br><span class="line">	&#123;<span class="string">nome:</span> <span class="string">'Ananda'</span>, <span class="string">idade:</span> <span class="number">17</span>&#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Uma coisa interessante é que o array passado como argumento é sempre concatenado ao final.</p>
+<ul>
+<li><h4 id="slice"><a href="#slice" class="headerlink" title="slice()"></a>slice()</h4><p>  O slice é bem diferente do splice. Com o slice podemos fazer recortes do nosso array ao passar as posições de início e fim.</p>
+  <figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="string">'manga'</span>, <span class="string">'leite'</span>, <span class="string">'abacaxi'</span>, <span class="string">'ovo'</span>];</span><br><span class="line">meuArray.slice(<span class="number">0</span>,<span class="number">2</span>);</span><br><span class="line">//<span class="symbol">Retorno</span>  [<span class="string">'manga'</span>, <span class="string">'leite'</span>]</span><br></pre></td></tr></table></figure>
+<p>  Se analisarmos bem, esse não era o resultado esperado, pois a posição 2 é o abacaxi. Isso aconteceu porque o ultimo item a ser retornado com o slice é a posição - 1, ou seja, 2-1.<br>  Se quisermos imprimir o abacaxi nosso slice deve ir de 0 a 3( 3 - 1).</p>
+  <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">meuArray.slice(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"><span class="regexp">//</span> Retorno  [<span class="string">'manga'</span>, <span class="string">'leite'</span>, <span class="string">'abacaxi'</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h4><p>  Essa é mais uma das propriedades com um nome intuitivo. Essa função faz exatamente o que o nome sugere, ela reverte o nosso array.</p>
+  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>];</span><br><span class="line">meuArray.reverse();</span><br><span class="line"><span class="comment">// Retorno  [50, 40, 30, 20, 10]</span></span><br></pre></td></tr></table></figure>
+<p>  Cuidado, pois essa é uma das operações que alteram o array.</p>
+</li>
+<li><h4 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h4><p>  Com ela nós conseguimos ordenar um array.</p>
+  <figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="string">'comida'</span>, <span class="string">'roupa lavada'</span>, <span class="string">'casa'</span>];</span><br><span class="line">meuArray.sort();</span><br><span class="line">// <span class="symbol">Resultado</span>  [<span class="string">"casa"</span>, <span class="string">"comida"</span>, <span class="string">"roupa lavada"</span>]</span><br></pre></td></tr></table></figure>
+<p>  Porém esse método vai muito além disso, podemos ordenar itens números na ordem crescente ou decrescente.  A lógica da ordenação pode parecer confusa, mas é bem simples.</p>
+<pre><code>1. Nós vamos ter dois argumentos A e B. 
+2. A será o primeiro item do array e B o segundo.
+3. A ordenação acontece com base na subtração entre A e B.
+4. Se o resultado for negativo, A aparece antes de B.
+5. Se o resultado for 0, nada é alterado.
+6. Se o resultado for positivo, B aparece antes de A.
+</code></pre>  <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="number">20</span>, <span class="number">1</span>, <span class="number">44</span>, <span class="number">109</span>, <span class="number">6</span>, <span class="number">21</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">meuArray.sort(function(a,b)&#123;</span><br><span class="line">	return a - b;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Resultado  [1, 5, 6, 20, 21, 44, 109]</span></span><br></pre></td></tr></table></figure>
+<p>  Se quisermos que a ordenação seja em ordem decrescente só mudamos a subtração.</p>
+  <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">meuArray.sort(<span class="function"><span class="keyword">function</span><span class="params">(a,b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b - a;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Resultado  [109, 44, 21, 20, 6, 5, 1]</span></span><br></pre></td></tr></table></figure>
+<p>  Esse método também altera o array.</p>
+</li>
+<li><h4 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h4><p>  O join nos permite transformar um array em uma string com um separado qualquer.</p>
+  <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">meuArray = [<span class="string">'Bahia'</span>, <span class="string">'Maceió'</span>, <span class="string">'Pernambuco'</span>];</span><br><span class="line">meuArray.join(<span class="string">'-'</span>);</span><br><span class="line"><span class="regexp">//</span> Resultado   <span class="string">'Bahia-Maceió-Pernambuco'</span></span><br></pre></td></tr></table></figure>
+<p>  O join é como uma operação inversa do split. No split nós transformamos uma string em um array, já no join acontece o contrário.</p>
+</li>
+</ul>
+<h3 id="Isso-e-tudo-pessoal"><a href="#Isso-e-tudo-pessoal" class="headerlink" title="Isso é tudo, pessoal!!"></a>Isso é tudo, pessoal!!</h3><p>Cheguei ao fim de mais um post!! Em breve farei mais alguns sobre a linguagem. Esse ficou um pouco extenso, mas o objetivo era fazer um resumão bem completo pra entender o básico do uso dos arrays.</p>
+<p>Todo esse conteúdo foi feito com base nos seguintes links:<br><a href="https://www.youtube.com/watch?v=093dIOCNeIc&amp;list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc&amp;index=1" target="_blank" rel="noopener">Canal do Rodrigo Branas</a><br><a href="https://w3schools.com" target="_blank" rel="noopener">W3school</a><br><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" rel="noopener">Documentação da Mozila</a><br><a href="https://imasters.com.br/artigo/21197/javascript/entendendo-arrays-no-javascript/?trace=1519021197&amp;source=single" target="_blank" rel="noopener">Imasters</a></p>
+<p>Obrigado por ler até aqui!! Se curtiu esse post compartilha com seus amigos e deixa um comentário caso tenha alguma sugestão do que posso melhorar.</p>
+
+  </p>
+  <div class="comments">
+    
+  <script>
+    var disqus_shortname = 'cristiano-goncalves';
+    
+    var disqus_url = 'https://crisgon.github.io/posts/Usando-Arrays-com-JavaScript/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+      
+    <div id="disqus_thread"></div>
+  </div>
+</article>    
+
+
+
+
+
+			<footer class="footer">
+  <p>&copy; 2018 Cristiano Gonçalves.</p>
+  <p>
+    Desenvolvido com <a href="https://hexo.io" target="_blank">Hexo</a>. Inspirado no blog do <a href="http://gabsferreira.com/" target="_blank">Gabriel Ferreira</a>.
+  </p>
+</footer>
+		</section>
+		
+	</main>
+	<script src="/js/index.js"></script>
+	<script src="/js/nav.js"></script>
+	<script src="https://use.fontawesome.com/3a8d059f5c.js"></script>
+</body>
+</html>
+

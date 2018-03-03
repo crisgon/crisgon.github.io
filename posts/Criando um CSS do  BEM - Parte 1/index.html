@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#e74c3c">
+	<link rel="icon" href="/images/favicon.ico" />
+	
+		<title>Criando um CSS do  BEM - Parte 1</title>
+			
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body >
+	<main class="container">
+		<nav class="mobile-header">
+			<button class="mobile-nav-button" data-js="open-nav">
+				<i class="fa fa-bars" aria-Label="Menu"></i>
+			</button>
+		</nav>
+			<header class="header" data-js="nav">
+		<button class="close-nav" data-js="close-nav"><i class="fa fa-times" aria-hidden="true"></i></button>
+		<img src="/images/profile.jpg" alt="Cristiano Gonçalves" class="profile">
+		<a href="/">
+			<h1 class="site-name">Cristiano Gonçalves</h1>
+		</a>
+	
+		<nav class="navigation">
+			<ul class="navigation-list">
+				<li class="navigation-link">
+					<a href="/">Home</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/about">Sobre</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/projects">Projetos</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/experiments">Experimentos</a>
+				</li>
+			</ul>
+		</nav> 
+
+		<ul class="social-list">
+			<li class="social-icon">
+				<a href="https://www.facebook.com/cris.gonn" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://twitter.com/Gonkristiano" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://www.linkedin.com/in/cristiano-gonçalves-12a395105/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://github.com/crisgon/" target="_blank"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://codepen.io/crisgon/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+	</header>
+		
+		<section class="content">
+			<a href="/index.html" class="home-link">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>Voltar
+</a>
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-header-title">Criando um CSS do  BEM - Parte 1</h1>  
+    <div class="infos">
+      <time datetime="Thu Feb 22 2018 15:05:46 GMT-0300" class="post-header-date">
+        <i class="fa fa-calendar" aria-label="Data de publicação"></i> 22/02/2018  |
+        <i class="fa fa-clock-o" aria-label="Tempo de leitura"></i> 6 minutos de leitura
+      </time>
+        
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </div>
+  </header>
+  <p class="post-content">
+    <p>Provavelmente você, assim como eu, deve passar por dificuldades ao nomear uma classe CSS e depois de muito esforço cria essa classe com um nome nada legal e com pouco significado. Com a classe criada você inicia a escrita do CSS, gera um arquivo com centenas de linhas e finaliza seu trabalho. A princípio tudo está sob controle, pois o layout ficou do exatamente do jeito que você queria. Depois disso passam-se alguns meses e surge a necessidade de fazer mudanças no seu CSS, mas você demora um certo tempo tentando entender o que cada classe faz,  após um tempo buscando entender seu própio CSS você decide criar uma nova seção no seu projeto e essa seção tem alguns elementos que já foram criados anteriormente, mas você não consegue fazer reuso e é levado a copiar todas as regras para uma nova classe que você precisou criar, aumentando ainda mais seu CSS.</p>
+<p>Que processo complicado, não? Se para quem escreveu o CSS essa situação já é confusa, imagine para um colega de trabalho ou para alguém da comunidade que quer contribuir com seu projeto e não consegue pois seu código não possui um padrão.  E mesmo que alguém resolva contribuir com seu projeto, sem um padrão as coisas só tendem a piorar. É por isso que nesse artigo iremos ver um pouco sobre como padronizar o CSS utilizando a metodologia BEM.</p>
+<p><img src="https://ep00.epimg.net/cultura/imagenes/2016/07/15/actualidad/1468534370_106822_1468599693_noticia_normal.jpg" alt="Programador com as mãos na cabeça em frente ao computador"></p>
+<h3 id="BEM-Block-Element-Modifier"><a href="#BEM-Block-Element-Modifier" class="headerlink" title="BEM ( Block__Element_Modifier)"></a>BEM ( Block__Element_Modifier)</h3><p>Criado pelo <a href="https://www.yandex.com" target="_blank" rel="noopener">Yandex</a>, site de buscas russo, o BEM é uma entre as diversas metodologias para organização do CSS,  segundo a descrição do própio <a href="http://getbem.com" target="_blank" rel="noopener">site</a>  o BEM é focado em ajudar na criação de componentes reutilizaveis e no compartilhamento de código no desenvolvimento Front End.<br>Sua estrutura é dividida em <strong>B</strong>loco, <strong>E</strong>lemento e <strong>M</strong>odificador.</p>
+<ul>
+<li><p>Bloco<br>  Um bloco é um algo que tem um significado mesmo sozinho. Ou seja, ele por si só consegue passar a informação de sua funcionalidade.<br>  <strong>Exemplos:</strong> Menu, Cabeçalho, Formulário, Button, Input, Card, etc.</p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">”email”</span>&gt;</span>E-mail:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">”email”</span> <span class="attr">name</span>=<span class="string">”email”</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Elemento<br>  O elemento não consegue passar uma informação sozinho. Ele faz parte de um bloco e pode precisar de outros elementos para ter um significado.<br>  <strong>Exemplos:</strong> Input checkbox ou radio, Label, Item de uma lista ou menu. </p>
+  <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">”checkbox”</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Modificador</p>
+<p>  Utilizado para mudar a aparência, visibilidade, tamanho ou comportamento de um bloco ou elemento.<br>  <strong>Exemplos:</strong> Small, Big, Hidden, Error, alert, Fixed, Red, Green.</p>
+</li>
+</ul>
+<h4 id="Criando-classes"><a href="#Criando-classes" class="headerlink" title="Criando classes"></a>Criando classes</h4><p>Agora já sabemos de que uma classe é composta ao utilizar a metodologia BEM, porém ainda existe outro ponto importante, responsável pela estranheza e pela grande sacada do BEM.</p>
+<p>As classes com BEM são escritas dessa forma <strong>Block__Element_Modifier</strong>, existem algumas variações como essa <strong>Block__Element–Modifier</strong>, mas irei utilizar a primeira forma, pois é a utilizada nos exemplos da documentação.</p>
+<p>O bloco é separado pelo elemento com o uso de 2 underlines(__) e o modificador é separado por 1 underline(_), quando necessário o valor de um modificador é separado por 1 traço (-).</p>
+<p><strong>Vamos ao exemplo:</strong></p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">&lt;form action=<span class="string">""</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"form"</span>&gt;</span><br><span class="line">    &lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">"text"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"form__name"</span>&gt;</span><br><span class="line">    &lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">"email"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"form__email"</span>&gt;</span><br><span class="line">    &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"form__button_red"</span>&gt;<span class="type">Enviar</span>&lt;/button&gt;</span><br><span class="line">    &lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">"form__button_green"</span>&gt;<span class="type">Cancelar</span>&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>Aqui temos um bloco, 4 elementos e 2 modificadores.<br><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.form</span> (Bloco)</span><br><span class="line"><span class="selector-class">.form__name</span> (elemento)</span><br><span class="line"><span class="selector-class">.form__email</span> (elemento)</span><br><span class="line"><span class="selector-class">.form__button_red</span> (elemento com modificador)</span><br><span class="line"><span class="selector-class">.form__button_green</span> (elemento com modificador)</span><br></pre></td></tr></table></figure></p>
+<p>Nesse exemplo temos apenas um modificador, mas podemos combinar vários.<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.form__button_green</span> <span class="selector-class">.form__button_size-small</span></span><br></pre></td></tr></table></figure></p>
+<p>Você pode conferir um exemplo mais detalhado no meu <a href="https://codepen.io/crisgon/pen/YeedJo" target="_blank" rel="noopener">codepen</a>.</p>
+<h4 id="Mas-isso-e-muito-estranho…"><a href="#Mas-isso-e-muito-estranho…" class="headerlink" title="Mas isso é muito estranho…"></a>Mas isso é muito estranho…</h4><p><strong>Pode parecer bem estranho, mas essa estranheza tem suas vantagens:</strong></p>
+<ul>
+<li>Ao “bater o olho” você consegue entender a estrutura. É fácil perceber que <code>.form__name</code>  é um elemento do bloco <code>.form</code>.</li>
+<li>Cada elemento tem seu nome, permitindo que uma alteração não afete outro elemento do mesmo tipo.</li>
+<li>Problemas com especificidade são raros, pois só usamos classes e evitamos o aninhamento.</li>
+<li>Existe melhoria no desempenho, pois seletores CSS são lidos da direita para esquerda e no BEM temos apenas uma classe, o que      torna a leitura mais rápida.</li>
+<li>Os códigos podem ser fácilmente reaproveitados. </li>
+</ul>
+<p><strong>E também possui desvantagens</strong></p>
+<ul>
+<li>As classes podem ficar extensas e deixar o HTML poluído.</li>
+<li>O HTML fica com mais mais linhas, tornando o arquivo final maior.</li>
+<li>Frameworks como Bootstrap não utilizam BEM, então a mistura de padrões pode tornar tudo confuso.</li>
+</ul>
+<h4 id="Concluindo-BEM-discretamente"><a href="#Concluindo-BEM-discretamente" class="headerlink" title="Concluindo BEM discretamente"></a>Concluindo BEM discretamente</h4><p>Até aqui vimos um pouco sobre a estrutura de classes do BEM e como ela pode ser algo bem estranha logo no primeiro contato, pois as classes ficam bem extensas. Também vimos que criar classes bem descritas facilitam no entendimento do código, porém tornam o HTML mais extenso, mas que esse pequeno aumento do HTML é compensado ao mantermos um CSS bem organizado, fácil de dar manutenção e com grande possibilidade de reaproveitamento de código.</p>
+<p><strong>No próximo artigo irei abordar sobre a convenção para criação dos nomes das classes, sobre aninhamentos e quando criar blocos ou elementos.</strong></p>
+<h4 id="Alguns-links-importantes"><a href="#Alguns-links-importantes" class="headerlink" title="Alguns links importantes"></a>Alguns links importantes</h4><p><a href="http://getbem.com" target="_blank" rel="noopener">BEM</a><br><a href="https://imasters.com.br/front-end/css/usando-bem-css/?trace=1519021197&amp;source=single" target="_blank" rel="noopener">Usando BEM CSS</a><br><a href="http://mono.company/journal/frontend/learning-to-love-bem/" target="_blank" rel="noopener">Learning to love bem</a></p>
+<p>Obrigado por ler até aqui!! Se curtiu esse post compartilha com seus amigos e deixa um comentário caso tenha alguma sugestão do que posso melhorar.</p>
+
+  </p>
+  <div class="comments">
+    
+  <script>
+    var disqus_shortname = 'cristiano-goncalves';
+    
+    var disqus_url = 'https://crisgon.github.io/posts/Criando um CSS do  BEM - Parte 1/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+      
+    <div id="disqus_thread"></div>
+  </div>
+</article>    
+
+
+
+
+
+			<footer class="footer">
+  <p>&copy; 2018 Cristiano Gonçalves.</p>
+  <p>
+    Desenvolvido com <a href="https://hexo.io" target="_blank">Hexo</a>. Inspirado no blog do <a href="http://gabsferreira.com/" target="_blank">Gabriel Ferreira</a>.
+  </p>
+</footer>
+		</section>
+		
+	</main>
+	<script src="/js/index.js"></script>
+	<script src="/js/nav.js"></script>
+	<script src="https://use.fontawesome.com/3a8d059f5c.js"></script>
+</body>
+</html>
+

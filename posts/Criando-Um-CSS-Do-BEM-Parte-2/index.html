@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#e74c3c">
+	<link rel="icon" href="/images/favicon.ico" />
+	
+		<title>Criando Um CSS Do BEM - Parte 2</title>
+			
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body >
+	<main class="container">
+		<nav class="mobile-header">
+			<button class="mobile-nav-button" data-js="open-nav">
+				<i class="fa fa-bars" aria-Label="Menu"></i>
+			</button>
+		</nav>
+			<header class="header" data-js="nav">
+		<button class="close-nav" data-js="close-nav"><i class="fa fa-times" aria-hidden="true"></i></button>
+		<img src="/images/profile.jpg" alt="Cristiano Gonçalves" class="profile">
+		<a href="/">
+			<h1 class="site-name">Cristiano Gonçalves</h1>
+		</a>
+	
+		<nav class="navigation">
+			<ul class="navigation-list">
+				<li class="navigation-link">
+					<a href="/">Home</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/about">Sobre</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/projects">Projetos</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/experiments">Experimentos</a>
+				</li>
+			</ul>
+		</nav> 
+
+		<ul class="social-list">
+			<li class="social-icon">
+				<a href="https://www.facebook.com/cris.gonn" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://twitter.com/Gonkristiano" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://www.linkedin.com/in/cristiano-gonçalves-12a395105/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://github.com/crisgon/" target="_blank"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://codepen.io/crisgon/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+	</header>
+		
+		<section class="content">
+			<a href="/index.html" class="home-link">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>Voltar
+</a>
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-header-title">Criando Um CSS Do BEM - Parte 2</h1>  
+    <div class="infos">
+      <time datetime="Fri Mar 02 2018 13:27:13 GMT-0300" class="post-header-date">
+        <i class="fa fa-calendar" aria-label="Data de publicação"></i> 02/03/2018  |
+        <i class="fa fa-clock-o" aria-label="Tempo de leitura"></i> 7 minutos de leitura
+      </time>
+        
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </div>
+  </header>
+  <p class="post-content">
+    <p>Na <a href="http://localhost:4000/posts/Criando%20um%20CSS%20do%20%20BEM%20-%20Parte%201/" target="_blank" rel="noopener">parte 1</a> desse artigo falamos um pouco sobre como nomear uma classe significativa e reaproveitável utilizando BEM, porém existem mais alguns pontos importantes para escrever um CSS seguindo essa metodologia, como  a organização de arquivos, um dos assuntos que iremos ver por aqui.</p>
+<p class="center"><br><img src="http://cdn-ak.f.st-hatena.com/images/fotolife/n/nomal_f/20160221/20160221125012.png" alt="Logo do BEM"><br></p>
+
+<h4 id="Algumas-consideracoes-importantes"><a href="#Algumas-consideracoes-importantes" class="headerlink" title="Algumas considerações importantes"></a>Algumas considerações importantes</h4><p>Não basta simplemente criar uma classe separada por (__) para ter um CSS no padrão BEM, por isso listei algumas informações importantes:</p>
+<ul>
+<li><p>Nem todo bloco precisa ter um elemento.</p>
+<figure class="highlight hsp"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">button</span> class=”<span class="keyword">button</span>-sucess <span class="keyword">button</span>-small”&gt;Enviar&lt;<span class="keyword">button</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Todo elemento precisa fazer parte de um bloco.</p>
+</li>
+<li><p>Um elemento pode ter outro elemento aninhado, porém o seu nome deve ser referente ao bloco.</p>
+  <figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"> &lt; <span class="selector-tag">form</span> class = <span class="string">"search-form"</span> &gt; </span><br><span class="line">   &lt; <span class="selector-tag">div</span> class = <span class="string">"search-form__content"</span> &gt; </span><br><span class="line">       &lt; <span class="selector-tag">input</span> class = <span class="string">"search-form__input"</span> &gt;</span><br><span class="line">   &lt; <span class="selector-tag">button</span> class = <span class="string">"search-form__button"</span> &gt; Pesquisa &lt;/ <span class="selector-tag">button</span> &gt; </span><br><span class="line">    &lt;/ <span class="selector-tag">div</span> &gt; </span><br><span class="line">&lt;/ <span class="selector-tag">form</span> &gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Um bloco pode conter outros blocos.</p>
+</li>
+<li><p>Os modificadores são opcionais .</p>
+</li>
+<li><p>Crie um bloco quando o mesmo não depender de outros componentes para ser reutilizado.</p>
+</li>
+<li><p>Crie um elemento quando o mesmo não puder ser reutilizado fora do bloco em que faz parte. </p>
+</li>
+</ul>
+<h3 id="Estrutura-de-arquivos"><a href="#Estrutura-de-arquivos" class="headerlink" title="Estrutura de arquivos"></a>Estrutura de arquivos</h3><p class="center"><br><img src="http://3.bp.blogspot.com/-jfYO152EdB4/V7R8wweRJtI/AAAAAAAAf7A/BriM8Xk7-RIXCJN05wtTE6C2y0oP9E3LQCK4B/s1600/libro.gif" alt="Uma mão deslizando sobre livros em uma prateleira"><br></p>
+
+<p>A estrutura de arquivos do BEM é tão peculiar quanto a forma em que suas classes são nomeadas, porém existe uma lógica por trás de tudo. Os arquivos são bem fragmentados, o que pode facilitar na manutenção, pois  quando existir algum problema você pode ir direto no arquivo do bloco  em questão.</p>
+<h4 id="Algumas-diretrizes-para-a-estrutura-de-arquivos-de-um-projeto-BEM"><a href="#Algumas-diretrizes-para-a-estrutura-de-arquivos-de-um-projeto-BEM" class="headerlink" title="Algumas diretrizes para a estrutura de arquivos de um projeto BEM"></a>Algumas diretrizes para a estrutura de arquivos de um projeto BEM</h4><ul>
+<li>Os projetos são divididos em níveis.</li>
+<li>Os blocos são implementados em arquivos separados.</li>
+<li>Os arquivos são agrupados por significado e não por tipo.</li>
+</ul>
+<h4 id="Os-projetos-sao-divididos-em-niveis"><a href="#Os-projetos-sao-divididos-em-niveis" class="headerlink" title="Os projetos são divididos em níveis"></a>Os projetos são divididos em níveis</h4><p>Os projetos são divididos em níveis e não existe uma quantidade máxima para isso. Em outras palavras, podemos ter diversas pastas com diversos níveis de hierarquia.<br>Exemplo:</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">project</span>/</span><br><span class="line">    <span class="meta">common</span>.<span class="keyword">blocks/ </span> # Diretório para <span class="keyword">blocos </span>do projeto</span><br><span class="line">    library.<span class="keyword">blocks/ </span># Diretório para <span class="keyword">blocos </span>da <span class="keyword">biblioteca</span></span><br></pre></td></tr></table></figure>
+<h4 id="Os-blocos-sao-implementados-em-arquivos-separados"><a href="#Os-blocos-sao-implementados-em-arquivos-separados" class="headerlink" title="Os blocos são implementados em arquivos separados"></a>Os blocos são implementados em arquivos separados</h4><p>Cada bloco tem seu css implementado em um  arquivo único. Por exemplo, se criarmos um bloco formulario, seu css deve ser armazenado em um arquivo formulario.css.</p>
+<p>Exemplo:<br><figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">project</span> </span><br><span class="line">    <span class="meta">common</span>.<span class="keyword">blocks/ </span></span><br><span class="line">        input.css   # CSS para o <span class="keyword">bloco </span>input</span><br></pre></td></tr></table></figure></p>
+<p>O código dos elementos e  modificadores também são armazenados em arquivos separados. Dessa forma conseguimos incluir apenas os elementos e modificadores necessários para a implementação do bloco em questão. </p>
+<p>Exemplo:<br><figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">project </span><br><span class="line">    <span class="keyword">common</span>.blocks/ </span><br><span class="line">        input.css            <span class="meta"># CSS para o bloco input</span></span><br><span class="line">        input_theme_sun.css  <span class="meta"># CSS para o modificador input_theme_sun</span></span><br><span class="line">        input__clear.css     <span class="meta"># CSS para o elemento input__clear</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Os-arquivos-sao-agrupados-por-significado-e-nao-por-tipo"><a href="#Os-arquivos-sao-agrupados-por-significado-e-nao-por-tipo" class="headerlink" title="Os arquivos são agrupados por significado e não por tipo"></a>Os arquivos são agrupados por significado e não por tipo</h4><p>Cada bloco possui uma pasta onde todos os arquivos referentes a ele são agrupados,  seja arquivos css ou js.<br>Exemplo:<br><figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">project</span> </span><br><span class="line">    <span class="meta">common</span>.<span class="keyword">blocks/ </span></span><br><span class="line">        input/            # Diretório para o <span class="keyword">bloco </span>input</span><br><span class="line">            input.css     # CSS para o <span class="keyword">bloco </span>input</span><br><span class="line">            input.js      # JavaScript para o <span class="keyword">bloco </span>input</span><br><span class="line">        <span class="keyword">popup/ </span>           # Diretório para o <span class="keyword">bloco </span><span class="keyword">popup</span></span><br><span class="line"><span class="keyword"> </span>           <span class="keyword">popup.css </span>    # CSS para o <span class="keyword">bloco </span><span class="keyword">popup</span></span><br><span class="line"><span class="keyword"> </span>           <span class="keyword">popup.js </span>     # JavaScript para o <span class="keyword">bloco </span><span class="keyword">popup</span></span><br></pre></td></tr></table></figure></p>
+<p>Também podemos criar uma pasta para modificadores de blocos que possuem mais de um valor.<br>Exemplo:</p>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">project </span><br><span class="line">    <span class="keyword">common</span>.blocks/                     <span class="meta"># Diretório para os blocos</span></span><br><span class="line">        input/                         <span class="meta"># Diretório para o bloco input </span></span><br><span class="line">            _type/                     <span class="meta"># Diretório para o modificador input_type</span></span><br><span class="line">                input_type_search.css  <span class="meta"># CSS para o modificador input_type</span></span><br><span class="line">                input_type_pass.css    <span class="meta"># CSS para o modificador input_type</span></span><br><span class="line">            input.css                  <span class="meta"># CSS para o bloco input</span></span><br><span class="line">            input.js                   <span class="meta"># JavaScript para o bloco input</span></span><br><span class="line">        popup/                         <span class="meta"># Diretório para o bloco popup</span></span><br></pre></td></tr></table></figure>
+<h3 id="Na-metodologia-BEM-os-arquivos-podem-ser-organizados-de-tres-maneiras"><a href="#Na-metodologia-BEM-os-arquivos-podem-ser-organizados-de-tres-maneiras" class="headerlink" title="Na metodologia BEM os arquivos podem ser organizados de três maneiras:"></a>Na metodologia BEM os arquivos podem ser organizados de três maneiras:</h3><ul>
+<li>Nested </li>
+<li>Flat </li>
+<li>Flex</li>
+</ul>
+<h4 id="Nested"><a href="#Nested" class="headerlink" title="Nested"></a>Nested</h4><p>Uma abordagem clássica do projeto BEM, usada nos projetos <a href="https://github.com/bem/bem-core/tree/v4.2.1/common.blocks/page" target="_blank" rel="noopener">bem-core</a> e <a href="https://github.com/bem/bem-components/tree/v6.0.0/common.blocks/button" target="_blank" rel="noopener">bem-components</a>. Essa abordagem segue algumas diretrizes:</p>
+<ul>
+<li>Cada bloco corresponde a um diretório.</li>
+<li>Os arquivos de elementos e modificadores são escritos separadamentes e em diretŕoios separados.</li>
+<li>O diretório do bloco é a raiz dos subdiretórios de seus elementos e modificadores.</li>
+<li>O nome dos diretórios de elementos começam com um duplo sublinhado (__).</li>
+<li>O nome dos diretórios dos modificadores começam com um sublinhado único (_).</li>
+</ul>
+<p>Exemplo:<br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">project </span><br><span class="line">    common.blocks/                            <span class="comment"># Diretório para os blocos</span></span><br><span class="line">        input/                                <span class="comment"># Diretório para o bloco input</span></span><br><span class="line">            _type/                            <span class="comment"># Diretório para o modificador input_type</span></span><br><span class="line">                input_type_search.css         <span class="comment"># CSS para o modificador input_type</span></span><br><span class="line">            __<span class="keyword">clear</span>/                          <span class="comment"># Diretório para o elemento input__clear </span></span><br><span class="line">                _visible/                     <span class="comment"># Diretório para o modificador input__clear_visible</span></span><br><span class="line">                    input__<span class="keyword">clear</span>_visible.css  <span class="comment"># CSS para o modificador input__clear_visible</span></span><br><span class="line">                input__<span class="keyword">clear</span>.css              <span class="comment"># CSS para o elemento input__clear</span></span><br><span class="line">                input__<span class="keyword">clear</span>.js               <span class="comment"># JavaScript para o elemento input__clear</span></span><br><span class="line">        input.css                             <span class="comment"># CSS para o bloco input</span></span><br><span class="line">        input.js                              <span class="comment"># JavaScript para o bloco input</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Flat"><a href="#Flat" class="headerlink" title="Flat"></a>Flat</h4><p>Essa é uma versão simplificada, onde os blocos, elementos  ou modificadores não possuem diretórios.<br>Elementos e modificadores são implementados em arquivos separados ou no arquivo do bloco principal.</p>
+<p>Exemplo:<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">project </span><br><span class="line">    common.<span class="keyword">blocks/ </span></span><br><span class="line">        input_type_search.css     <span class="comment"># CSS para o modificador input_type_search modifier</span></span><br><span class="line">        input_type_search.<span class="keyword">js </span>     <span class="comment"># Javascript para o modificador input_type_search</span></span><br><span class="line">        input__clear.<span class="keyword">js </span>          <span class="comment"># Elemento opicional para o bloco input</span></span><br><span class="line">        input.css </span><br><span class="line">        input.<span class="keyword">js </span></span><br><span class="line">        popup.css </span><br><span class="line">        popup.<span class="keyword">js </span></span><br><span class="line">        popup.png</span><br></pre></td></tr></table></figure></p>
+<h4 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h4><p>Essa é uma combinação entre nested e o flat. Blocos simples usam flat e blocos com a estrutura maior usam nested. Ou seja, se o bloco possuir vários elementos e modificadores, usamos o nested, caso o bloco não possua nada disso, usamos o flat.</p>
+<ul>
+<li>Cada bloco corresponde  a um diretório.</li>
+<li>Elementos e modificadores podem ser implementados em arquivos de bloco ou em arquivos separados.</li>
+</ul>
+<p>Exemplo:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">project </span><br><span class="line">    common.blocks/</span><br><span class="line">        input/                                <span class="comment"># Diretório para o bloco input</span></span><br><span class="line">            _type/                            <span class="comment"># Diretório para o modificador input_type</span></span><br><span class="line">                input_type_search.css         <span class="comment"># CSS para o modificarod input_type</span></span><br><span class="line">            __<span class="keyword">clear</span>/                          <span class="comment"># Diretório para o elemento input__clear</span></span><br><span class="line">                _visible/                     <span class="comment"># Diretório para o modificador input__clear_visible</span></span><br><span class="line">                    input__<span class="keyword">clear</span>_visible.css  <span class="comment"># CSS para o modificador input__clear_visible</span></span><br><span class="line">                input__<span class="keyword">clear</span>.css              <span class="comment"># CSS para o elemento input__clear</span></span><br><span class="line">                input__<span class="keyword">clear</span>.js               <span class="comment"># JavaScript para o elemento input__clear</span></span><br><span class="line">            input.css                         <span class="comment"># CSS para o bloco input</span></span><br><span class="line">            input.js                          <span class="comment"># JavaScript para o bloco input</span></span><br><span class="line">        popup/                                <span class="comment"># Diretório para o bloco popup</span></span><br><span class="line">            popup.css </span><br><span class="line">            popup.js </span><br><span class="line">            popup.png</span><br></pre></td></tr></table></figure>
+<h3 id="BEM-isso-e-tudo-pessoal"><a href="#BEM-isso-e-tudo-pessoal" class="headerlink" title="BEM, isso é tudo pessoal."></a>BEM, isso é tudo pessoal.</h3><p>Esse foi meu apanhado sobre a metodologia BEM, existe muito mais informações que você pode conferir na <a href="https://en.bem.info" target="_blank" rel="noopener">documentação</a> do BEM.</p>
+<p>Eu particularmente não curto a forma que os arquivos são organizados com o BEM, acho que é  por falta de familiriadade, pois entendo o problema que ele vem resolver e os benefícios que essa abordagem proporciona para o desenvolvedor. Enfim, acredito que toda essa questão de organização seja algo que pode ser adaptado e combinado com a equipe, caso esteja trabalhando com uma. </p>
+<p>Eu fiz um pequeno projeto utilizando BEM, incluindo a parte de organização de arquivos, é algo bem simples e deve ter muita coisa errada, mas você pode dar uma conferida no meu <a href="https://github.com/crisgon/control-panel/tree/gh-pages" target="_blank" rel="noopener">github</a>.</p>
+<p><br><br>Obrigado por ler até aqui!! Se curtiu esse post compartilha com seus amigos e deixa um comentário caso tenha alguma sugestão do que posso melhorar.</p>
+
+  </p>
+  <div class="comments">
+    
+  <script>
+    var disqus_shortname = 'cristiano-goncalves';
+    
+    var disqus_url = 'https://crisgon.github.io/posts/Criando-Um-CSS-Do-BEM-Parte-2/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+      
+    <div id="disqus_thread"></div>
+  </div>
+</article>    
+
+
+
+
+
+			<footer class="footer">
+  <p>&copy; 2018 Cristiano Gonçalves.</p>
+  <p>
+    Desenvolvido com <a href="https://hexo.io" target="_blank">Hexo</a>. Inspirado no blog do <a href="http://gabsferreira.com/" target="_blank">Gabriel Ferreira</a>.
+  </p>
+</footer>
+		</section>
+		
+	</main>
+	<script src="/js/index.js"></script>
+	<script src="/js/nav.js"></script>
+	<script src="https://use.fontawesome.com/3a8d059f5c.js"></script>
+</body>
+</html>
+

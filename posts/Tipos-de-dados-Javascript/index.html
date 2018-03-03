@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#e74c3c">
+	<link rel="icon" href="/images/favicon.ico" />
+	
+		<title>Tipos de dados Javascript</title>
+			
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body >
+	<main class="container">
+		<nav class="mobile-header">
+			<button class="mobile-nav-button" data-js="open-nav">
+				<i class="fa fa-bars" aria-Label="Menu"></i>
+			</button>
+		</nav>
+			<header class="header" data-js="nav">
+		<button class="close-nav" data-js="close-nav"><i class="fa fa-times" aria-hidden="true"></i></button>
+		<img src="/images/profile.jpg" alt="Cristiano Gonçalves" class="profile">
+		<a href="/">
+			<h1 class="site-name">Cristiano Gonçalves</h1>
+		</a>
+	
+		<nav class="navigation">
+			<ul class="navigation-list">
+				<li class="navigation-link">
+					<a href="/">Home</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/about">Sobre</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/projects">Projetos</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/experiments">Experimentos</a>
+				</li>
+			</ul>
+		</nav> 
+
+		<ul class="social-list">
+			<li class="social-icon">
+				<a href="https://www.facebook.com/cris.gonn" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://twitter.com/Gonkristiano" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://www.linkedin.com/in/cristiano-gonçalves-12a395105/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://github.com/crisgon/" target="_blank"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://codepen.io/crisgon/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+	</header>
+		
+		<section class="content">
+			<a href="/index.html" class="home-link">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>Voltar
+</a>
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-header-title">Tipos de dados Javascript</h1>  
+    <div class="infos">
+      <time datetime="Thu Jan 25 2018 19:52:04 GMT-0300" class="post-header-date">
+        <i class="fa fa-calendar" aria-label="Data de publicação"></i> 25/01/2018  |
+        <i class="fa fa-clock-o" aria-label="Tempo de leitura"></i> 15 minutos de leitura
+      </time>
+        
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </div>
+  </header>
+  <p class="post-content">
+    <p>Como já tinha comentado em outro <a href="https://crisgon.github.io/posts/Todo-dia-um-blog-diferente/">post</a>, esse blog foi criado para documentar e compartilhar meu estudo sobre tecnologias front end. Essa semana eu retomei os estudos sobre Javascript(JS) e decidi começar do básico, pois quero entender bem sobre os princípios da linguagem. Inicialmente eu estudei sobre os tipos primitivos da linguagem e resolvi compartilhar o “pequeno” resumo que fiz durante meus estudos, é algo bem introdutório, mas é um pouco do que entendi sobre o assunto.</p>
+<p></p><p class="center"><br><img src="http://cdn.mos.cms.futurecdn.net/EzgdmaCQuT84bgDL4fhXZS.jpg" alt="Wallpaper Javascript"><br></p><br>Antes de falar sobre os tipos primitivos de dados é preciso comentar sobre algo de grande importância  na  linguagem Javascript. Ela não é  uma linguagem fortemente tipada, isso quer dizer que não precisamos declarar o tipo da variável no ato da criação. Ou seja, não precisamos dizer se ela vai ser um inteiro, um caractere, simplismente declaramos um valor.<p></p>
+<p><strong>Exemplo:</strong><br>Linguagem C<br><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Declaração de variaves em C</span></span><br><span class="line">int numeroDeHoras = <span class="number">0</span>;           </span><br><span class="line"><span class="type">float</span> precoDoQuilo = <span class="number">10.53</span>;   </span><br><span class="line">double  taxaDoDolar = <span class="number">1.8</span>;</span><br><span class="line">char nomeDoCliente[<span class="number">30</span>] = <span class="string">"Fulano"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>Javascript</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Declaração de variaves em Javascript</span></span><br><span class="line"><span class="keyword">var</span> numeroDeHoras = <span class="number">0</span>;           </span><br><span class="line"><span class="keyword">var</span> precoDoQuilo = <span class="number">10.53</span>;</span><br><span class="line"><span class="keyword">var</span> taxaDoDolar = <span class="number">1.8</span>;</span><br><span class="line"><span class="keyword">var</span> nomeDoCliente = <span class="string">"Fulano"</span>;</span><br></pre></td></tr></table></figure>
+<p>Ao criarmos uma variável no Javascript, ela pode assumir valores de diversos tipos. Entre os tipos disponíveis na linguagem os principais são  [number, string, boolean, object, function e undefined].</p>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><p>Ao contrário de algumas linguagens, o JS não define diferentes tipos de números, como interger, float, long e etc. Temos apenas dois tipos, os inteiros e os de ponto flutuante.</p>
+<p><strong>Exemplo:</strong><br> <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">120</span>; <span class="comment">//Esse é um numero inteiro(int)</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">12.01</span>; <span class="comment">//Esse é um numero de ponto flutuante(float)</span></span><br></pre></td></tr></table></figure></p>
+<p>Os números inteiros são preciso até 15 dígitos</p>
+<p><strong>Exemplo:</strong></p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">999999999999999</span>;   <span class="comment">// num1 vai ser 999999999999999</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">9999999999999999</span>;  <span class="comment">// num2 vai ser 10000000000000000.</span></span><br></pre></td></tr></table></figure>
+<p>Os números de ponto flutuante aceitam precisamente até 17 casas decimais</p>
+<p><strong>Exemplo:</strong></p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">0.1234567891234568</span>; <span class="comment">// 0.1234567891234568</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">0.123456789123455555588</span>;  <span class="comment">// 0.12345678912345555</span></span><br></pre></td></tr></table></figure>
+<p>Podemos utilizar os números para fazer as operações básicas (soma, subtração, divisão, multiplicação) e também podemos fazer cálculos mais complexos, como raiz quadrada, cosseno, seno e diversos tipos de operações utilizando o <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank" rel="noopener">Math</a> do javascript.</p>
+<h3 id="Quando-tratamos-de-aritmetica-podemos-ter-3-resultados-principais"><a href="#Quando-tratamos-de-aritmetica-podemos-ter-3-resultados-principais" class="headerlink" title="Quando tratamos de aritmética podemos ter 3 resultados principais:"></a>Quando tratamos de aritmética podemos ter 3 resultados principais:</h3><h4 id="Numero-inteiro-ou-com-casas-decimais"><a href="#Numero-inteiro-ou-com-casas-decimais" class="headerlink" title="Número inteiro ou com casas decimais"></a>Número inteiro ou com casas decimais</h4><p><strong>Exemplo:</strong></p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">num1 = <span class="number">0.5</span> - <span class="number">0.5</span> ; <span class="comment">// 0</span></span><br><span class="line">num2 = <span class="number">2</span> - <span class="number">1</span>; <span class="comment">// 1</span></span><br><span class="line">num1 = <span class="number">2</span> * <span class="number">3</span>; <span class="comment">// 6</span></span><br><span class="line">num2 = <span class="number">2</span> / <span class="number">2</span>; <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>Existem casos em que a operação não é precisa:<br><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">num1 = <span class="number">0.2</span> + <span class="number">0.1</span>;  <span class="comment">// 0.30000000000000004</span></span><br></pre></td></tr></table></figure></p>
+<div class="obs">OBS: Números ‘somados’ a strings geram uma string com a concatenação dosvalores. </div><br><strong>Exemplo:</strong><br><figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="symbol">num1</span> = <span class="string">'Letra'</span> + <span class="number">1</span> <span class="comment">// Letra1</span></span><br><span class="line"><span class="symbol">num2</span> = <span class="number">2</span> + <span class="string">'numero'</span> <span class="comment">// 2numero</span></span><br></pre></td></tr></table></figure><br><br>Em alguns casos, quando existir uma string na operação o resultado não será uma soma, mas sim uma concatenação.<br><br><strong>Exemplo:</strong><br><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">'O resultado é igual a' + <span class="number">10</span> + <span class="number">10</span>  <span class="comment">// O resultado é igual a1010</span></span><br></pre></td></tr></table></figure><br><br>Porém o compilador JS funciona da esquerda para direita, podendo fazer uma soma antes da concatenação.<br><br><strong>Exemplo:</strong><br><br><figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="symbol">num1</span> = <span class="number">10</span> + <span class="number">20</span> + <span class="string">'numero'</span> <span class="comment">// 30numero</span></span><br></pre></td></tr></table></figure><br><br>#### +Infinito ou -Infinito<br><br>O infinito é utilizado para representar números que excedem a capacidade de representação númerica do JS, seja o menor ou o maior número.<br><br><strong>Exemplo:</strong><br>    <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">num1 = <span class="number">3</span> / <span class="number">0</span> <span class="comment">// Infinity</span></span><br><span class="line">num2 = <span class="number">-3</span> / <span class="number">0</span> <span class="comment">// -Infinity</span></span><br></pre></td></tr></table></figure><br><br><div class="obs">OBS: Podemos verificar o maior e o menor número que podem ser representados com as seguintes propriedades.<br><em>Number.MAX_VALUE e Number.MIN_VALUE</em>, basta executa-los no console do seu navegador.<br></div>
+
+<h4 id="NaN-Not-a-Number-Nao-e-um-numero"><a href="#NaN-Not-a-Number-Nao-e-um-numero" class="headerlink" title="NaN (Not a Number - Não é um número)"></a>NaN (Not a Number - Não é um número)</h4><p>O NaN é utilizado para representar o resultado de uma tentativa de operação numérica, mas que não é um número.</p>
+<p><strong>Exemplo:</strong><br><figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="symbol">num1</span> =	<span class="number">2</span> * <span class="string">'string'</span>; <span class="comment">// NaN</span></span><br><span class="line"><span class="symbol">num2</span> =	<span class="number">2</span> - <span class="string">'string'</span>; <span class="comment">// NaN</span></span><br><span class="line"><span class="symbol">num1</span> =	<span class="number">2</span> / <span class="string">'String'</span>; <span class="comment">// NaN</span></span><br><span class="line"><span class="symbol">num2</span> = <span class="number">0</span> / <span class="number">0</span>; <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="NaN-nao-e-igual-a-NaN"><a href="#NaN-nao-e-igual-a-NaN" class="headerlink" title="NaN não é igual a NaN"></a>NaN não é igual a NaN</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span> <span class="comment">//Falso</span></span><br></pre></td></tr></table></figure>
+<p>Isso acontece, pois o NaN é o resultado de uma operação que não “faz sentido”, logo o resultado de uma operação “sem sentido” não é igual ao resultado de outra operação “sem sentido”.</p>
+<h4 id="Numeros-em-forma-de-strings"><a href="#Numeros-em-forma-de-strings" class="headerlink" title="Números em forma de strings:"></a>Números em forma de strings:</h4><p>O JS faz conversão de tipos e em todos os casos que existir duas ou mais strings contendo números ele vai tentar fazer a conversão antes da operação.<br><strong>Exemplo:</strong><br><figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">num1</span> = <span class="string">'10'</span> - <span class="string">'10'</span>  // <span class="number">0</span></span><br><span class="line"><span class="attr">num2</span> = <span class="string">'10'</span> * <span class="string">'10'</span> // <span class="number">100</span></span><br><span class="line"><span class="attr">num1</span> = <span class="string">'10'</span> / <span class="string">'10'</span> // <span class="number">1</span></span><br><span class="line"><span class="attr">num2</span> = <span class="string">'10'</span> + <span class="string">'10'</span> // <span class="string">'1010'</span></span><br></pre></td></tr></table></figure></p>
+<p>Apenas no caso do sinal de + que a conversão não acontece, pois quando existe uma string esse sinal é utilizado para concatenação.</p>
+<h4 id="Declarando-numeros"><a href="#Declarando-numeros" class="headerlink" title="Declarando números"></a>Declarando números</h4><p>Números podem ser declarados de duas formas, da forma literal ou na forma de objetos.<br><strong>Forma literal: var num = 10</strong><br><strong>Forma de objeto: var num = new Number(10)</strong></p>
+<p>Aparentemente, ambas as formas resultam em um número, porém elas tem tipos diferentes. Com a forma literal nós temos um tipo number e com a forma de objetos nós temos um tipo object.</p>
+<p><strong>Exemplo:</strong><br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">typeof</span>(num1); <span class="comment">// number</span></span><br><span class="line"><span class="keyword">typeof</span>(num2); <span class="comment">// object</span></span><br></pre></td></tr></table></figure></p>
+<p>Se compararmos num1 a num2 teremos o seguinte resultado.</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="symbol">num1</span> == <span class="symbol">num2</span>; <span class="comment">// verdadeiro, pois só verificamos o valor</span></span><br><span class="line"><span class="symbol">num1</span> === <span class="symbol">num2</span>; <span class="comment">// falso, pois possuem o mesmo valor, mas são de tipos diferentes</span></span><br></pre></td></tr></table></figure>
+<p>Também temos um problema ao comparar dois números criados em forma de objetos, pois a comparação entre dois objetos sempre retorna falso.</p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="keyword">new</span> <span class="type">Number</span>(<span class="number">2</span>);</span><br><span class="line"><span class="keyword">var</span> num2 = <span class="keyword">new</span> <span class="type">Number</span>(<span class="number">2</span>);</span><br><span class="line">num1 == num2 <span class="comment">// falso</span></span><br></pre></td></tr></table></figure>
+<p>O recomendado é criar números da forma literal, pois eles são do tipo number e possuem a execução mais veloz.</p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>String é um tipo de dado, imutável, do JS que pode ser usado para armazenar e manipular caracteres e textos, podendo conter 0 ou mais caracteres.</p>
+<p>Uma string pode ser declarada das seguintes formas:</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nome = <span class="string">'Cristiano'</span>;</span><br><span class="line"><span class="keyword">var</span> nome = <span class="built_in">String</span>(<span class="string">'Cristiano'</span>);</span><br><span class="line"><span class="keyword">var</span> nome = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'Cristiano'</span>);</span><br></pre></td></tr></table></figure>
+<p>As strings podem ser declaradas com aspas “string” ou apóstrofos(aspas simples) ‘string’, porém não podemos iniciar com um tipo e terminar com outro.</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Errado</span></span><br><span class="line"><span class="selector-tag">var</span> nome = <span class="string">"string';</span></span><br></pre></td></tr></table></figure>
+<p>Podemos também utilizar aspas ou apóstrofos dentro de uma string. Quando precisamos usar aspas dentro da string nós declaramos a mesma com apóstrofos e vice e versa.</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">var frase</span> = <span class="string">'Segundo fulano: "A frase é boa"'</span>;</span><br></pre></td></tr></table></figure>
+<p>Existe outra forma de utilizar aspas dentro de uma string, que é através do escape de caracteres com a \(barra).</p>
+<p><strong>Alguns escapes:</strong><br><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nome = <span class="string">"Cris\""</span>; <span class="comment">// \"  (Cris")</span></span><br><span class="line"><span class="keyword">var</span> nome = <span class="string">"Cris\'"</span>; <span class="comment">// \' (Cris') </span></span><br><span class="line"><span class="keyword">var</span> nome = <span class="string">"Cris\\"</span>; <span class="comment">// \\ (Cris\\)</span></span><br><span class="line"><span class="keyword">var</span> nome = <span class="string">"Cri\ns"</span>; <span class="comment">// \n (Cr</span></span><br><span class="line"><span class="keyword">is</span>)</span><br><span class="line"><span class="keyword">var</span> nome = <span class="string">"Cris\ts"</span>; <span class="comment">// \t (Cri		s)</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Juntar-strings-Concatenar"><a href="#Juntar-strings-Concatenar" class="headerlink" title="Juntar strings (Concatenar)"></a>Juntar strings (Concatenar)</h4><p>O ato de juntar duas strings é o que chamamos de concatenação, uma das formas de fazer isso é através do uso do sinal de +.</p>
+<p><strong>Exemplo:</strong></p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nome = <span class="string">'Cristiano'</span>;</span><br><span class="line"><span class="keyword">var</span> sobrenome = <span class="string">"Gonçalves"</span>;</span><br><span class="line">nome + sobrenome; <span class="comment">// CristianoGonçalves</span></span><br><span class="line">nome + <span class="string">"Estudante"</span> <span class="comment">// CristianoEstudante</span></span><br></pre></td></tr></table></figure>
+<p>O resultado ficou junto porque espaço em branco também é um caractere.</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">nome + <span class="string">" "</span> + sobrenome; <span class="comment">//Cristiano Gonçalves</span></span><br></pre></td></tr></table></figure>
+<p>Algumas operações matemáticas podem ser feitas durante a concatenação:</p>
+<p><strong>Exemplo:</strong></p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">nome + <span class="number">2</span> + <span class="number">2</span> + sobrenome; <span class="comment">// Cristiano22Gonçalves</span></span><br></pre></td></tr></table></figure>
+<p>Para obtermos a soma antes de concatenar poderíamos utilizar os parênteses</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">nome + (<span class="number">2</span> + <span class="number">2</span>) + nome; <span class="comment">// Cristiano4Gonçalves</span></span><br></pre></td></tr></table></figure>
+<h4 id="Strings-como-objetos"><a href="#Strings-como-objetos" class="headerlink" title="Strings como objetos"></a>Strings como objetos</h4><p>Declarar strings em forma objetos pode nos dá problemos assim como declarar números em forma de objetos, pois o valor será uma string e o tipo será um objeto, logo podemos ter algumas complicações.</p>
+<p><strong>Exemplo:</strong><br><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> nome = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">'Cris'</span>).</span><br><span class="line"><span class="keyword">var</span> nome2 = <span class="string">'Cris'</span>;</span><br><span class="line"></span><br><span class="line">nome == nome2;   <span class="comment">// Verdadeiro</span></span><br><span class="line">nome === nome2;  <span class="comment">// Falso</span></span><br></pre></td></tr></table></figure></p>
+<p>Uma alternativa é converter um objeto string em uma string utilizando o método valueOf()</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">nome === nome2.valueOf(); <span class="comment">// Verdadeiro</span></span><br><span class="line"><span class="keyword">typeof</span>(nome2); <span class="comment">// Object</span></span><br><span class="line"><span class="keyword">typeof</span>(nome2.valueOf()); <span class="comment">// String</span></span><br></pre></td></tr></table></figure>
+<p>Como uma string é imutável, ela continua sendo um objeto, e apenas nessa instrução é que conseguimos extrair um tipo string através de um objeto.</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typeof</span>(nome2); <span class="comment">// Object</span></span><br></pre></td></tr></table></figure>
+<p>A única forma de mudar uma string é atribuindo seu valor novamente.</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="symbol">nome2</span> = <span class="symbol">nome2</span>.valueOf<span class="comment">()</span>;</span><br><span class="line">typeof<span class="comment">(nome2)</span>; <span class="comment">// String</span></span><br></pre></td></tr></table></figure>
+<h4 id="API-String"><a href="#API-String" class="headerlink" title="API String"></a>API String</h4><p>Existe a <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" rel="noopener">API</a> da string onde podemos fazer diversas operações  com uma string,  como:</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">nome</span><span class="selector-class">.length</span>; <span class="comment">//Verificar seu tamanho</span></span><br><span class="line"><span class="selector-tag">nome</span><span class="selector-class">.charAt</span>(<span class="number">1</span>); <span class="comment">//Encontrar um caractere em uma determinada posição</span></span><br><span class="line"><span class="selector-tag">nome</span><span class="selector-class">.indexOf</span>(<span class="string">'i'</span>); <span class="comment">//Encontrar a posição de um caractere</span></span><br></pre></td></tr></table></figure>
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><p>Esse é um tipo de dado lógico que pode assumir dois valores, true e false (verdadeiro e falso). Ele pode aparecer de diversas formas, uma das mais comuns é quando fazemos alguma operação de comparação.</p>
+<p><strong>Exemplo:</strong> </p>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">4 </span>&gt; <span class="number">1</span> ; // (<span class="number">4</span> é maior que <span class="number">1</span>) Verdadeiro</span><br><span class="line"><span class="symbol">4 </span>== <span class="number">2</span>; //(<span class="number">4</span> é igual a <span class="number">2</span>) Falso</span><br></pre></td></tr></table></figure>
+<p>Podemos verificar o valor lógico de alguns dados utilizando o !!. Essa dupla exclamação quer dizer que estamos negando algo duas vezes, logo acessamos o seu valor lógico. Isso quer dizer que, se temos uma sentenssa verdadeira e a negamos (invertemos seu valor lógico), passamos a ter uma sentenssa falso, agora se nergarmos outra vez vamos ter algo verdadeiro novamente.</p>
+<p><strong>Exemplo:</strong><br><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="literal">true</span>; <span class="comment">//Verdadeiro</span></span><br><span class="line">num1 = !num1; <span class="comment">//Antes era verdadeiro e agora é Falso</span></span><br><span class="line">num1 = !num1; <span class="comment">//Antes era Falso e agora é verdadeiro novamente</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Essa é uma forma simplificada de realizar a mesma operação feita anteriormente</span></span><br><span class="line"><span class="keyword">var</span> num1 = <span class="literal">true</span>; <span class="comment">//Verdadeiro</span></span><br><span class="line">num1 = !!num1; <span class="comment">//Verdadeiro</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//Esses são alguns valores falsos do JS. Outros valores falsos podem ser criados com comparações.</span></span><br><span class="line"><span class="keyword">var</span> num1 = !!<span class="literal">false</span>; <span class="comment">//Falso é falso</span></span><br><span class="line"><span class="keyword">var</span> num1 = !!<span class="string">''</span>; <span class="comment">//String vazia é falso</span></span><br><span class="line"><span class="keyword">var</span> num1 = !!<span class="number">0</span>; <span class="comment">//Zero é falso</span></span><br><span class="line"><span class="keyword">var</span> num1 = !!<span class="literal">null</span>; <span class="comment">//Null é falso</span></span><br><span class="line"><span class="keyword">var</span> num1 = !!<span class="literal">undefined</span>; <span class="comment">//Undefined é falso</span></span><br><span class="line"><span class="keyword">var</span> num1 = !!<span class="literal">NaN</span>; <span class="comment">//NaN é falso</span></span><br></pre></td></tr></table></figure></p>
+<p>Uma aplicação: Vamos supor que presisamos executar um código caso um determinado número seja diferente de zero. O comum seria verificar se o número é diferente de zero, porém podemos passar apenas o número como parâmetro para o if. E se o número for zero, ele tem o valor falso,e sabemos que o if só executa sentessas verdadeiras. Veja o código.</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Esse seria a primeira coisa que pensariamos em fazer.</span></span><br><span class="line"><span class="keyword">If</span>(num != 0) &#123;</span><br><span class="line"> console.<span class="built_in">log</span>('Zero é falso, por isso essa instrução <span class="keyword">n</span>ão será executada');</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Essa é uma forma em que usamos do poder da linguagem e diminuimos um pouco a escrita.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">If</span>(num) &#123;</span><br><span class="line"> console.<span class="built_in">log</span>('Instrução executada, <span class="keyword">se</span> o <span class="keyword">n</span>úmero <span class="keyword">n</span>ão <span class="keyword">for</span> zero, pois qualquer <span class="keyword">n</span>úmero diferente <span class="keyword">de</span> zero tem um valor verdadeiro.');</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>Os objetos são um tipo de dado do JS  que nos permite armazenar diversos tipos de dados em uma única variável.<br>Por exemplo, se temos que realizar o cadastro de uma pessoa e pegar nome, idade e sexo. Poderíamos criar uma variável para cada um dos dados. Porém podemos simplificar esse processo criando apenas o objeto pessoa.</p>
+<p><strong>Exemplo:</strong> </p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> pessoa = &#123; nome: <span class="string">'Cristiano'</span>, idade: <span class="number">22</span>, sexo: <span class="string">'M'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> pessoa = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
+<p>Os objetos são compostos por uma chave, dois pontos e logo depois o valor para essa chave. Cada chave-valor é separada por uma vírgula.</p>
+<p>Podemos acessar as propriedades de cada objeto de várias maneiras.</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">pessoa.nome; <span class="comment">// Cristiano</span></span><br><span class="line">pessoa['nome']; <span class="comment">// Cristiano</span></span><br></pre></td></tr></table></figure>
+<p>Essa segunda forma é utilizada para dados dinâmicos ou compostos, como “cor dos olhos”</p>
+<p>Também podemos acessar as propriedades através de um loop.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> item <span class="keyword">in</span> pessoa)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(pessoa[item]);</span><br><span class="line"><span class="comment">//Cris</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>É possível adicionar propriedades depois que o objeto for criado.</p>
+<figure class="highlight prolog"><table><tr><td class="code"><pre><span class="line">pessoa.bairro = <span class="string">'Barreiro'</span>;</span><br><span class="line">pessoa[<span class="string">'cidade'</span>] = <span class="string">'Alagoinhas'</span>;</span><br></pre></td></tr></table></figure>
+<p>Ou podemos deletar</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">delete</span> pessoa.idade;</span><br></pre></td></tr></table></figure>
+<div class="obs">Obs: As chaves de um objeto podem receber todos os tipos de valores, inclusive outros objetos e funções. </div>
+
+<p><strong>Exemplo:</strong></p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> meuObjeto = &#123;</span><br><span class="line">	numeros: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line">	outrosObjetos: &#123;objetoUm: <span class="string">'Um'</span>, objetoDois: <span class="number">2</span>&#125;,</span><br><span class="line">	funcao: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">'Item de um objeto'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><p>Uma função é um bloco  de código que executa comandos dentro dos {}</p>
+<p>Existem duas formas básicas de criar uma função.</p>
+<p>A function declaration:</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title">soma</span> (a, b) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="type">a</span> + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>E a function expression</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> soma = <span class="function"><span class="keyword">function</span> <span class="title">soma</span> <span class="params">(a, b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Ou</span></span><br><span class="line"><span class="keyword">var</span> soma = <span class="function"><span class="keyword">function</span> <span class="params">(a, b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A principal diferença entre as duas formas é que com a function declaration podemos invocar a função antes mesmo de declarar, pois o JS carrega as funções antes de interpretar o documento.</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Isso é possível</span></span><br><span class="line">soma();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">soma</span> <span class="params">(a, b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Isso não é possível</span></span><br><span class="line">soma();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> soma = <span class="function"><span class="keyword">function</span>  <span class="params">(a, b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>As funções do JS são de primeira classe, isso quer dizer que elas podem ser atribuídas a variáveis, ser passadas como parâmetros e podem ser retornadas por outras funções.</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Uma passagem de argumentos comum.</span></span><br><span class="line">soma(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ola</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">'ola'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Uma passagem de funções como argumentos.</span></span><br><span class="line">soma(ola);</span><br></pre></td></tr></table></figure>
+<h3 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h3><p>Basicamente, undefined é um tipo de dado que carrega o valor undefined, quer quer dizer indefinido.<br>Undefined também é uma propriedade do objeto global do javascript e carrega o valor de undefined. Porém ele não é uma palavra reservada, isso quer dizer que até podemos usa-la para identificar variáveis, desde que não seja no escopo global.</p>
+<p>Um exemplo simples de como podemos receber um valor undefined é quando declaramos uma variável, mas não a iniciamos.</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> um;</span><br><span class="line"><span class="keyword">typeof</span>(um) <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<h3 id="Null-e-undefined-sao-a-mesma-coisa"><a href="#Null-e-undefined-sao-a-mesma-coisa" class="headerlink" title="Null e undefined são a mesma coisa?"></a>Null e undefined são a mesma coisa?</h3><p>Apesar da expressão null == undefined retornar true, os dois tem significados diferentes.<br>O undefined quer dizer que um valor ainda não foi definido, já o null quer dizer que o valor de algo é nulo. Vale lembrar que undefined é do tipo undefined, enquanto null é do tipo object.</p>
+<h3 id="Finalizando"><a href="#Finalizando" class="headerlink" title="Finalizando"></a>Finalizando</h3><p>Esse foi um post com o resumo do que entendi até agora sobre os tipos primitivos do JS, provavelmente algo não foi bem explicado e ficou confuso, se isso aconteceu só deixar um comentário pra que eu possa estudar mais e tentar explicar melhor.</p>
+<p>Minhas referências foram:<br><a href="https://www.youtube.com/watch?v=093dIOCNeIc&amp;list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc&amp;index=1" target="_blank" rel="noopener">Canal do Rodrigo Branas</a><br><a href="https://w3schools.com" target="_blank" rel="noopener">W3school</a><br><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" rel="noopener">Documentação da Mozila</a></p>
+<p>Obrigado por ler até aqui!! Se curtiu esse post compartilha com seus amigos e deixa um comentário caso tenha alguma sugestão do que posso melhorar.</p>
+
+  </p>
+  <div class="comments">
+    
+  <script>
+    var disqus_shortname = 'cristiano-goncalves';
+    
+    var disqus_url = 'https://crisgon.github.io/posts/Tipos-de-dados-Javascript/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+      
+    <div id="disqus_thread"></div>
+  </div>
+</article>    
+
+
+
+
+
+			<footer class="footer">
+  <p>&copy; 2018 Cristiano Gonçalves.</p>
+  <p>
+    Desenvolvido com <a href="https://hexo.io" target="_blank">Hexo</a>. Inspirado no blog do <a href="http://gabsferreira.com/" target="_blank">Gabriel Ferreira</a>.
+  </p>
+</footer>
+		</section>
+		
+	</main>
+	<script src="/js/index.js"></script>
+	<script src="/js/nav.js"></script>
+	<script src="https://use.fontawesome.com/3a8d059f5c.js"></script>
+</body>
+</html>
+
