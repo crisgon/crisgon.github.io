@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#e74c3c">
+	<link rel="icon" href="/images/favicon.ico" />
+	
+		<title>Coerção de tipos em javascript</title>
+			
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body >
+	<main class="container">
+		<nav class="mobile-header">
+			<button class="mobile-nav-button" data-js="open-nav">
+				<i class="fa fa-bars" aria-Label="Menu"></i>
+			</button>
+		</nav>
+			<header class="header" data-js="nav">
+		<button class="close-nav" data-js="close-nav"><i class="fa fa-times" aria-hidden="true"></i></button>
+		<img src="/images/profile.jpg" alt="Cristiano Gonçalves" class="profile">
+		<a href="/">
+			<h1 class="site-name">Cristiano Gonçalves</h1>
+		</a>
+	
+		<nav class="navigation">
+			<ul class="navigation-list">
+				<li class="navigation-link">
+					<a href="/">Home</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/about">Sobre</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/projects">Projetos</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/experiments">Experimentos</a>
+				</li>
+			</ul>
+		</nav> 
+
+		<ul class="social-list">
+			<li class="social-icon">
+				<a href="https://www.facebook.com/cris.gonn" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://twitter.com/Gonkristiano" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://www.linkedin.com/in/cristiano-gonçalves-12a395105/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://github.com/crisgon/" target="_blank"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://codepen.io/crisgon/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+	</header>
+		
+		<section class="content">
+			<a href="/index.html" class="home-link">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>Voltar
+</a>
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-header-title">Coerção de tipos em javascript</h1>  
+    <div class="infos">
+      <time datetime="Mon Apr 30 2018 22:35:11 GMT-0300" class="post-header-date">
+        <i class="fa fa-calendar" aria-label="Data de publicação"></i> 30/04/2018  |
+        <i class="fa fa-clock-o" aria-label="Tempo de leitura"></i> 5 minutos de leitura
+      </time>
+        
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </div>
+  </header>
+  <p class="post-content">
+    <p>Comecei a leitura do excelente livro <a href="https://github.com/cezaraugusto/You-Dont-Know-JS" target="_blank" rel="noopener">You Dont Know JS</a> e resolvi ir escrevendo pequenos posts sobre as coisas interessantes que for aprendendo. Hoje vou falar sobre coerção de tipos, esse é um assunto que a princípio parece ser bem simples, mas que é de extrema importância para entender como o javascript se comporta em diversas situações, evitando pequenas dores de cabeça no futuro.</p>
+<p class="center"><br><img src="https://i.imgur.com/M4BaTpn.png" alt="Javascript - Comparação estrita entre um número e uma string retornando falso"><br></p>
+
+<h3 id="Coercao-Explicita-e-Implicita"><a href="#Coercao-Explicita-e-Implicita" class="headerlink" title="Coerção? Explicita e Implicita?"></a>Coerção? Explicita e Implicita?</h3><p>Coerção, no javascript, se refere ao ato de converter tipos de valores, como converter a string “42” para o number 42. No javascript temos dois tipos de coerção:</p>
+<p><strong>Coerção explícita:</strong> Quando usamos algum artifício da linguagem para forçar uma coerção. Um exemplo é o uso do <code>parseInt(“42”)<code>, que resulta no number 42.<br><strong>Coerção implícita:</strong> Essa coerção acontece nos bastidores, sendo fruto de alguma operação, como a de comparação. </code></code></p>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">42 </span>== <span class="string">"42"</span> // true</span><br></pre></td></tr></table></figure>
+<h3 id="Comparacoes"><a href="#Comparacoes" class="headerlink" title="Comparações"></a>Comparações</h3><p>Fazer comparações no javascript é algo que aprendemos logo ao iniciarmos com a linguagem,porém precisamos ficar atentos ao que acontece quando comparamos dois valores.<br>Temos 4 operadores para fazer comparações:  igual (==) , diferente (!=), estritamente igual (===) e estritamente diferente (!==).</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">//</span> Caso 1</span><br><span class="line">42 == <span class="string">"42"</span> <span class="string">//</span> <span class="literal">true</span> </span><br><span class="line"> </span><br><span class="line"><span class="string">//</span> Caso 2</span><br><span class="line">42 === <span class="string">"42"</span> <span class="string">//</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>A primeira coisa que pensamos é que no caso 1, usando (==), é testado apenas o valor e no caso dois , usando (===), é testado o valor e depois o tipo. Mas na verdade não é isso que realmente acontece… O que realmente acontece é a permissão ou não da coerção de tipos. No primeiro caso, o operador de igualdade permite a coeração, então nos bastidores teremos uma comparação assim:</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> Nossa comparação -&gt;  <span class="number">42</span> == <span class="string">"42"</span></span><br><span class="line"><span class="regexp">//</span> Nos bastidores -&gt; <span class="number">42</span> == <span class="number">42</span></span><br></pre></td></tr></table></figure>
+<p>No segundo caso, quando usamos o operador estritamente igual (===), não acontece a coerção, logo teremos uma comparação entre um number e uma string, que retorna falso.</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span> Nossa comparação -&gt;  <span class="number">42</span> === <span class="string">"42"</span></span><br><span class="line"><span class="regexp">//</span> Nos bastidores -&gt; <span class="number">42</span> === <span class="string">"42"</span></span><br></pre></td></tr></table></figure>
+<div class="obs">OBS: Tudo dito anteriormente também se aplica aos operadores de diferença != e !==.<br></div>
+
+<h4 id="Comparacoes-relacionais"><a href="#Comparacoes-relacionais" class="headerlink" title="Comparações relacionais"></a>Comparações relacionais</h4><p>Também possuímos os operadores relacionais, são eles: menor que (&lt;), maior que (&gt;), menor ou igual que (&lt;=) e maior ou igual que (&gt;=). Eles podem ser utilizados para numbers ou strings, no segundo caso usando regras alfabéticas.</p>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">3 </span>&lt; <span class="number">4</span> // true</span><br><span class="line"><span class="string">"bar"</span> &lt; <span class="string">"foo"</span> // true</span><br></pre></td></tr></table></figure>
+<h4 id="E-a-coercao"><a href="#E-a-coercao" class="headerlink" title="E a coerção?"></a>E a coerção?</h4><p>Ela acontece com todos os operadores relacionais, pois não existe nenhum operador relacional estrito, &lt;== não existe.</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">41</span>, b = <span class="string">"42"</span>, <span class="built_in">c</span> = <span class="string">"43"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Caso 1 </span></span><br><span class="line">a &lt; b <span class="comment">// true </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Caso 2 </span></span><br><span class="line">a &lt; <span class="built_in">c</span> <span class="comment">// true </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Caso 3 </span></span><br><span class="line">b &lt; <span class="built_in">c</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>No caso 3 ambos são comparados de forma alfabética, pois são strings. Já no caso 1 e 2, quando temos um número e um texto, existe uma coerção de string para number.</p>
+<h4 id="E-a-comparacao-entre-tipos-que-nao-podem-virar-numeros"><a href="#E-a-comparacao-entre-tipos-que-nao-podem-virar-numeros" class="headerlink" title="E a comparação entre tipos que não podem virar números?"></a>E a comparação entre tipos que não podem virar números?</h4><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">let a = 42, b = <span class="string">"foo"</span>;</span><br><span class="line"></span><br><span class="line"><span class="string">//</span> Caso 1</span><br><span class="line">a &gt; b <span class="string">//</span> <span class="literal">false</span> </span><br><span class="line"></span><br><span class="line"><span class="string">//</span> Caso 2</span><br><span class="line">a &lt; b <span class="string">//</span> <span class="literal">false</span> </span><br><span class="line"></span><br><span class="line"><span class="string">//</span> Caso 3</span><br><span class="line">a == b <span class="string">//</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p class="center"><br><img src="http://geradormemes.com/media/created/10r05k.jpg" alt="Furutama meme - Algo de errado não está certo"><br></p>
+
+<h4 id="Nao-nao-tem-nada-errado-Mas-essa-e-uma-grande-pegadinha"><a href="#Nao-nao-tem-nada-errado-Mas-essa-e-uma-grande-pegadinha" class="headerlink" title="Não, não tem nada errado! Mas essa é uma grande pegadinha!!"></a>Não, não tem nada errado! Mas essa é uma grande pegadinha!!</h4><p><strong>Lembra que eu falei que as comparações relacionais permitem coerção?</strong> Logo nos 3 casos o javascript tenta converter “foo” para um número e o que recebemos não é um número (<code>NaN</code>).<br>A especificação diz que o <code>NaN</code> não pode ser maior, menor ou igual a um número. Na verdade,um NaN não é maior, menor ou igual nem a outro <code>NaN</code>.</p>
+<p><strong>O que acontece nos bastidores é algo assim:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Caso 1</span></span><br><span class="line"><span class="number">42</span> &gt; <span class="literal">NaN</span> <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Caso 2</span></span><br><span class="line"><span class="number">42</span> &lt; <span class="literal">NaN</span> <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Caso 3</span></span><br><span class="line"><span class="number">42</span> == <span class="literal">NaN</span> <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="Concluindo…"><a href="#Concluindo…" class="headerlink" title="Concluindo…"></a>Concluindo…</h3><p>Até aqui aprendemos um pouco sobre a importância de entender como o javascript se comporta quando executamos algum tipo de comparação. Ter um entendimento não superficial sobre a linguagem pode ser o que vai impedir que fiquemos horas e horas presos em pequenos problemas que são simples, mas que podem ser uma pedra no sapato de quem não faz ideia do que esteja acontecendo.</p>
+<p>Em breve trarei mais postagens sobre Javascript, estava meio atolado de tarefas da faculdade, mas estou me organizando pra gerenciar tudo da melhor forma.</p>
+<h4 id="Minha-referencia-para-esse-conteudo"><a href="#Minha-referencia-para-esse-conteudo" class="headerlink" title="Minha referência para esse conteúdo:"></a>Minha referência para esse conteúdo:</h4><p><a href="https://github.com/cezaraugusto/You-Dont-Know-JS/" target="_blank" rel="noopener">Livro You Dont Know JS</a></p>
+<p>Obrigado por ler até aqui!! Se curtiu esse post compartilha com seus amigos e deixa um comentário caso tenha alguma sugestão do que posso melhorar.</p>
+
+  </p>
+  <div class="comments">
+    
+  <script>
+    var disqus_shortname = 'cristiano-goncalves';
+    
+    var disqus_url = 'https://crisgon.github.io/posts/Coercao-de-tipos-javascript/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+      
+    <div id="disqus_thread"></div>
+  </div>
+</article>    
+
+
+
+
+
+			<footer class="footer">
+  <p>&copy; 2018 Cristiano Gonçalves.</p>
+  <p>
+    Desenvolvido com <a href="https://hexo.io" target="_blank">Hexo</a>. Inspirado no blog do <a href="http://gabsferreira.com/" target="_blank">Gabriel Ferreira</a>.
+  </p>
+</footer>
+		</section>
+		
+	</main>
+	<script src="/js/index.js"></script>
+	<script src="/js/nav.js"></script>
+	<script src="https://use.fontawesome.com/3a8d059f5c.js"></script>
+</body>
+</html>
+
