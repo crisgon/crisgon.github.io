@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#e74c3c">
+	<link rel="icon" href="/images/favicon.ico" />
+	
+		<title>Entendendo Escopo no Javascript - Parte 1</title>
+			
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body >
+	<main class="container">
+		<nav class="mobile-header">
+			<button class="mobile-nav-button" data-js="open-nav">
+				<i class="fa fa-bars" aria-Label="Menu"></i>
+			</button>
+		</nav>
+			<header class="header" data-js="nav">
+		<button class="close-nav" data-js="close-nav"><i class="fa fa-times" aria-hidden="true"></i></button>
+		<img src="/images/profile.jpg" alt="Cristiano Gonçalves" class="profile">
+		<a href="/">
+			<h1 class="site-name">Cristiano Gonçalves</h1>
+		</a>
+	
+		<nav class="navigation">
+			<ul class="navigation-list">
+				<li class="navigation-link">
+					<a href="/">Home</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/about">Sobre</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/projects">Projetos</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/experiments">Experimentos</a>
+				</li>
+			</ul>
+		</nav> 
+
+		<ul class="social-list">
+			<li class="social-icon">
+				<a href="https://www.facebook.com/cris.gonn" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://twitter.com/Gonkristiano" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://www.linkedin.com/in/cristiano-gonçalves-12a395105/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://github.com/crisgon/" target="_blank"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://codepen.io/crisgon/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+	</header>
+		
+		<section class="content">
+			<a href="/index.html" class="home-link">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>Voltar
+</a>
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-header-title">Entendendo Escopo no Javascript - Parte 1</h1>  
+    <div class="infos">
+      <time datetime="Mon May 28 2018 01:09:24 GMT-0300" class="post-header-date">
+        <i class="fa fa-calendar" aria-label="Data de publicação"></i> 28/05/2018  |
+        <i class="fa fa-clock-o" aria-label="Tempo de leitura"></i> 6 minutos de leitura
+      </time>
+        
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </div>
+  </header>
+  <p class="post-content">
+    <p>Desenvolver com javascript é algo aparentemente simples, mas que pode trazer muita dor de cabeça pra quem não entende o real funcionamento da linguagem, ocasionando  situações onde o código apresenta problemas que podem ser difíceis de identificar, pois muitas vezes não estão ligados a sintaxe, mas sim a conceitos fundamentais da linguagem, como o <strong>escopo</strong>.</p>
+<p class="center"><br><img src="https://i.imgur.com/rOZuQfr.png" alt="Escopo aninhado e analogia com um prédio"><br></p>
+
+<h3 id="Afinal-o-que-e-escopo"><a href="#Afinal-o-que-e-escopo" class="headerlink" title="Afinal, o que é escopo?"></a>Afinal, o que é escopo?</h3><p>É basicamente um conjunto de regras que permitem o armazenamento de variáveis em algum lugar para que posteriormente ela possa ser acessada.</p>
+<h3 id="Mas-como-o-escopo-funciona"><a href="#Mas-como-o-escopo-funciona" class="headerlink" title="Mas como o escopo funciona?"></a>Mas como o escopo funciona?</h3><p>Para entendermos o escopo é preciso entender que, apesar do javascript ser considerado uma linguagem interpretada, existe um processo de compilação do programa antes da execução do mesmo.<br>O processo de compilação é algo bem complexo, mas que a grosso modo é composta de pelo menos os seguintes passos: Tokenização/Análise Léxica, Análise e Geração de código.</p>
+<h4 id="Tonekinzacao-Analise-Lexica"><a href="#Tonekinzacao-Analise-Lexica" class="headerlink" title="Tonekinzação/Análise Léxica"></a>Tonekinzação/Análise Léxica</h4><p>É basicamente a quebra de cada trecho do código em tokens, pedaços com significado para a linguagem.</p>
+<p><strong>Exemplo:</strong><br>O código <code>let a = 2;</code> seria quebrado em <code>let | a | = | 2 | ;</code>. Os espaços em brancos são mantidos quando tem algum significado para a linguagem.</p>
+<h4 id="Analise"><a href="#Analise" class="headerlink" title="Análise"></a>Análise</h4><p>Essa etapa pega um conjunto de tokens(array de tokens) e gera uma árvore de elementos aninhados que representam a estrutura do programa. Essa árvore é conhecida como AST (Abstract Syntax Tree).</p>
+<p><strong>Exemplo:</strong> Para um array de tokens gerados de <code>let a = 2;</code> teríamos : Um nó chamado variableDeclaration, que tem um filho chamado identifier e outro filho chamado assigmentExpression que tem um filho chamado numericLiteral.<br>Ficou um pouco confuso, mas a imagem deixa tudo mais claro.</p>
+<p class="center"><br><img src="https://i.imgur.com/bAymtdV.png" alt="Árvore sintática abstrata"><br></p>
+
+<h4 id="Geracao-de-codigo"><a href="#Geracao-de-codigo" class="headerlink" title="Geração de código"></a>Geração de código</h4><p>Esse é o processo em que a árvore AST é transformada em código executável. Esse processo pode ser diferente em cada linguagem.</p>
+<h3 id="Certo-mas-cade-o-escopo"><a href="#Certo-mas-cade-o-escopo" class="headerlink" title="Certo, mas cadê o escopo?"></a>Certo, mas cadê o escopo?</h3><p>Como eu tinha dito anteriormente, o escopo é basicamente um conjunto de regras que definem onde uma variável pode ser buscada e acessada. Essa busca pode ser de dois tipos: <strong>LHS</strong>(left-hand-side) ou <strong>RHS</strong>(right-hand-size), que tem como tradução livre, lado esquerdo e lado direito. Mas lado de que? Lado da atribuição, ou seja, do sinal de igual (=).</p>
+<p><strong>E como essas buscas funcionam?</strong><br>A busca <strong>LHS</strong> tem o objetivo de atribuição, ela verifica se existe uma referência para uma variável. Já a busca <strong>RHS</strong> procura por um valor para leitura.</p>
+<h3 id="Ainda-ta-meio-confuso-Agora-nao-vai-ficar-mais"><a href="#Ainda-ta-meio-confuso-Agora-nao-vai-ficar-mais" class="headerlink" title="Ainda tá meio confuso? Agora não vai ficar mais!"></a>Ainda tá meio confuso? Agora não vai ficar mais!</h3><p><strong>Vamos analisar o seguinte código:</strong></p>
+<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span><span class="params">()</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">  a = 42;</span></span></span><br><span class="line"><span class="function"><span class="comment">  console.log(a); </span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">myFunction</span><span class="params">()</span>;</span> <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
+<p>Se não estivermos usando o modo estrito(strict), não vai acontecer nenhum erro e o que temos aqui é uma busca <strong>LHS</strong>(busca por referência). O motor do javascript vai perguntar ao escopo se já existe algum referência para a, como não existe ele mesmo cria e não retorna erros.</p>
+<p><strong>Agora vamos analisar esse outro trecho:</strong></p>
+<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span><span class="params">()</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">  let a = 42;</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">myFunction</span><span class="params">()</span>;</span></span><br><span class="line">console.log(a); <span class="comment">// Reference Error</span></span><br></pre></td></tr></table></figure>
+<p>Nesse caso vamos ter um erro de referência, pois vamos ter uma busca <strong>LHS</strong> em que o motor vai receber uma resposta negativa do escopo. Pois não existe nenhuma variável chamada <code>a</code> no alcance no console. A única variável <code>a</code> que temos no nosso código está no escopo de myFunction, com suas regras de que ela só pode ser acessada naquele local.</p>
+<p><strong>Vamos ver um caso diferente:</strong></p>
+<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span><span class="params">()</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">  let a = b;</span></span></span><br><span class="line"><span class="function"><span class="comment">  console.log(a); </span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br><span class="line"><span class="function"><span class="title">myFunction</span><span class="params">()</span>;</span> <span class="comment">// Reference Error</span></span><br></pre></td></tr></table></figure>
+<p>Aqui é um caso onde temos uma busca <strong>RHS</strong>(busca por valor), pois precisamos do valor de b. O motor vai perguntar para o escopo qual o valor de b, porém b não existe e não tem valor, o que gera um Reference Error.</p>
+<h4 id="Escopos-aninhados"><a href="#Escopos-aninhados" class="headerlink" title="Escopos aninhados"></a>Escopos aninhados</h4><p>Quando uma busca não é bem sucedida, uma nova busca é feita no próximo escopo superior ao atual, até chegar ao escopo global.<br>Para entender escopos aninhados podemos fazer uma alusão com um pŕedio. Onde o escopo atual é o terreo e caso não encontremos o que queremos nele, vamos para o próximo andar(escopo) até chegar no último andar(escopo global).</p>
+<p><strong>Vamos ver um exemplo:</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> a = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">otherFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log( a + b );</span><br><span class="line">    &#125;</span><br><span class="line">    otherFunction();</span><br><span class="line">&#125;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">3</span>;</span><br><span class="line">myFunction(); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<p>No código acima acontece uma busca <strong>LHS</strong> e uma <strong>RHS</strong> em relação as variáveis <code>a</code> e <code>b</code>, como elas não foram encontradas no escopo de otherFunction a busca é feita novamente, mas agora no escopo superior, o de myFunction. São encontrados referência e valor para <code>a</code>, porém a busca continua para <code>b</code> e agora ela é feita no escopo global, onde o valor de <code>b</code> é encontrado e a soma é executada.</p>
+<h3 id="Ate-a-proxima-pessoal…"><a href="#Ate-a-proxima-pessoal…" class="headerlink" title="Até a próxima pessoal…"></a>Até a próxima pessoal…</h3><p>Até aqui vimos um pouco sobre o que acontece antes do código javascript ser executado, também vimos que o escopo é um conjunto de regras que define onde uma variável pode ser buscada e manipulada. Por fim vimos sobre escopo aninhado e como as buscas <strong>LHS</strong> e <strong>RHS</strong> funcionam.<br>Tudo isso pode parecer só abobrinha e você pode até achar que não precisa saber nada disso pra criar seu programa. E de certa forma você tem razão, não é necessário entender todas essas peculiaridades da linguagem para sair escrevendo um código javascript, porém esse conhecimento pode ser o que vai te salvar de perder horas sem saber o que tá acontecendo com a sua aplicação.</p>
+<h4 id="E-a-parte-2"><a href="#E-a-parte-2" class="headerlink" title="E a parte 2 ?"></a>E a parte 2 ?</h4><p>Na próxima parte do artigo eu vou falar sobre escopo léxico, escopo de função e escopo de bloco.</p>
+<p><strong>Espero que tenha aprendido algo com esse pequeno post :D</strong></p>
+<h4 id="Minha-referencia-para-esse-conteudo"><a href="#Minha-referencia-para-esse-conteudo" class="headerlink" title="Minha referência para esse conteúdo:"></a>Minha referência para esse conteúdo:</h4><p><a href="https://github.com/cezaraugusto/You-Dont-Know-JS/" target="_blank" rel="noopener">Livro You Dont Know JS</a></p>
+<p>Obrigado por ler até aqui!! Se curtiu esse post compartilha com seus amigos e deixa um comentário caso tenha alguma sugestão do que posso melhorar.</p>
+
+  </p>
+  <div class="comments">
+    
+  <script>
+    var disqus_shortname = 'cristiano-goncalves';
+    
+    var disqus_url = 'https://crisgon.github.io/posts/Entendendo-escopo-no-javascript/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+      
+    <div id="disqus_thread"></div>
+  </div>
+</article>    
+
+
+
+
+
+			<footer class="footer">
+  <p>&copy; 2018 Cristiano Gonçalves.</p>
+  <p>
+    Desenvolvido com <a href="https://hexo.io" target="_blank">Hexo</a>. Inspirado no blog do <a href="http://gabsferreira.com/" target="_blank">Gabriel Ferreira</a>.
+  </p>
+</footer>
+		</section>
+		
+	</main>
+	<script src="/js/index.js"></script>
+	<script src="/js/nav.js"></script>
+	<script src="https://use.fontawesome.com/3a8d059f5c.js"></script>
+</body>
+</html>
+
