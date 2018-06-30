@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#e74c3c">
+	<link rel="icon" href="/images/favicon.ico" />
+	
+		<title>Entendendo Escopo no Javascript - Parte 2</title>
+			
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body >
+	<main class="container">
+		<nav class="mobile-header">
+			<button class="mobile-nav-button" data-js="open-nav">
+				<i class="fa fa-bars" aria-Label="Menu"></i>
+			</button>
+		</nav>
+			<header class="header" data-js="nav">
+		<button class="close-nav" data-js="close-nav"><i class="fa fa-times" aria-hidden="true"></i></button>
+		<img src="/images/profile.jpg" alt="Cristiano Gonçalves" class="profile">
+		<a href="/">
+			<h1 class="site-name">Cristiano Gonçalves</h1>
+		</a>
+	
+		<nav class="navigation">
+			<ul class="navigation-list">
+				<li class="navigation-link">
+					<a href="/">Home</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/about">Sobre</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/projects">Projetos</a>
+				</li>
+				<li class="navigation-link">
+					<a href="/experiments">Experimentos</a>
+				</li>
+			</ul>
+		</nav> 
+
+		<ul class="social-list">
+			<li class="social-icon">
+				<a href="https://www.facebook.com/cris.gonn" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://twitter.com/Gonkristiano" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://www.linkedin.com/in/cristiano-gonçalves-12a395105/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://github.com/crisgon/" target="_blank"><i class="fa fa-github-alt" aria-hidden="true"></i></a>
+			</li>
+			<li class="social-icon">
+				<a href="https://codepen.io/crisgon/" target="_blank"><i class="fa fa-codepen" aria-hidden="true"></i></a>
+			</li>
+		</ul>
+	</header>
+		
+		<section class="content">
+			<a href="/index.html" class="home-link">
+  <i class="fa fa-arrow-left" aria-hidden="true"></i>Voltar
+</a>
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-header-title">Entendendo Escopo no Javascript - Parte 2</h1>  
+    <div class="infos">
+      <time datetime="Sat Jun 30 2018 09:58:31 GMT-0300" class="post-header-date">
+        <i class="fa fa-calendar" aria-label="Data de publicação"></i> 30/06/2018  |
+        <i class="fa fa-clock-o" aria-label="Tempo de leitura"></i> 2 minutos de leitura
+      </time>
+        
+    </div>
+  </header>
+  <p class="post-content">
+    <p>Se você caiu aqui de paraquedas recomendo ler a <a href="https://crisgon.github.io/posts/Entendendo-escopo-no-javascript/">parte 1</a> desse artigo, lá eu expliquei o que é escopo e como acontece a sua geração. Hoje vou falar sobre escopo léxico, escopo de função e escopo de bloco. Apenas para refrescar a mente de quem já leu o artigo, escopo é um conjunto de regras que definem onde as variáveis podem ser acessadas após seu armazenamento.</p>
+<h3 id="Escopo-lexico"><a href="#Escopo-lexico" class="headerlink" title="Escopo léxico?"></a>Escopo léxico?</h3><p>É o escopo definido no local onde as funções são declaradas!<br>Na análise léxica da compilação é possível definir onde cada identificador vai estar e onde ele pode ser buscado.</p>
+<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">(a)</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">  let b = 1;</span></span></span><br><span class="line"><span class="function"><span class="comment">  console.log(a + b);</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br><span class="line"><span class="function"><span class="title">foo</span><span class="params">(2)</span>;</span> <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>Tudo entre <code>{ }</code> é o escopo de foo, onde <code>a</code> e <code>b</code> estão disponíveis, gerando algum erro se tentarmos acessar qualquer uma dessas variáveis fora desse escopo.</p>
+<h3 id="Escopo-de-funcao-x-Escopo-de-bloco"><a href="#Escopo-de-funcao-x-Escopo-de-bloco" class="headerlink" title="Escopo de função x Escopo de bloco"></a>Escopo de função x Escopo de bloco</h3><p>Quando falamos de escopo pensamos logo em escopo de função, porém existe outra maneira de criar escopo, através de blocos <code>{…}</code>. Com a chegada do <code>let</code> no ES6, podemos fazer com que nossas variáveis sejam do escopo de declarações como <code>if</code>, <code>for</code> e etc.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Com var</span></span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">5</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Com let</span></span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">8</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(b); <span class="comment">// 8</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// Reference error</span></span><br></pre></td></tr></table></figure>
+<p>Com <code>var</code> uma variável criada em um bloco não faz parte do escopo,podendo ser acessada fora do bloco. Enquanto com <code>let</code> a variável passa a ter como escopo o bloco em questão.</p>
+<h3 id="Concluindo"><a href="#Concluindo" class="headerlink" title="Concluindo"></a>Concluindo</h3><p>Até aqui vimos a importância de entender sobre escopo, o que pode nos dar um norte na resolução de alguns problemas. Escopo é um assunto relativamente simples, mas seu entendimento é indispensável para o dominio da linguagem javascript. Espero que esse material tenha sido de alguma valid. :D </p>
+<p>Esse artigo foi menor que o normal, pois pretendo escrever artigos menos sempre que puder.</p>
+<h4 id="Minha-referencia-para-esse-conteudo"><a href="#Minha-referencia-para-esse-conteudo" class="headerlink" title="Minha referência para esse conteúdo:"></a>Minha referência para esse conteúdo:</h4><p><a href="https://github.com/cezaraugusto/You-Dont-Know-JS/" target="_blank" rel="noopener">Livro You Dont Know JS</a></p>
+<p>Obrigado por ler até aqui!! Se curtiu esse post compartilha com seus amigos e deixa um comentário caso tenha alguma sugestão do que posso melhorar.</p>
+
+  </p>
+  <div class="comments">
+    
+  <script>
+    var disqus_shortname = 'cristiano-goncalves';
+    
+    var disqus_url = 'https://crisgon.github.io/posts/Entendendo-escopo-no-javascript-Parte-2/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+      
+    <div id="disqus_thread"></div>
+  </div>
+</article>    
+
+
+
+
+
+			<footer class="footer">
+  <p>&copy; 2018 Cristiano Gonçalves.</p>
+  <p>
+    Desenvolvido com <a href="https://hexo.io" target="_blank">Hexo</a>. Inspirado no blog do <a href="http://gabsferreira.com/" target="_blank">Gabriel Ferreira</a>.
+  </p>
+</footer>
+		</section>
+		
+	</main>
+	<script src="/js/index.js"></script>
+	<script src="/js/nav.js"></script>
+	<script src="https://use.fontawesome.com/3a8d059f5c.js"></script>
+</body>
+</html>
+
