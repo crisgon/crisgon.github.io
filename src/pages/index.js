@@ -1,21 +1,21 @@
 import React from "react";
-import { Link } from "gatsby";
 
-import Layout from "../components/layout";
-import Image from "../components/image";
 import SEO from "../components/seo";
+import Layout from "../components/Layout";
+import HomeImage from "../components/HomeImage";
+import SocialIcons from "../components/SocialIcons";
+import PresentationText from "../components/PresentationText ";
+import ContainerFullWidth from "../components/ContainerFullWidth";
 
-const IndexPage = () => (
-	<Layout>
-		<SEO title="Home" />
-		<h1>Hi people</h1>
-		<p>Welcome to your new Gatsby site.</p>
-		<p>Now go build something great.</p>
-		<div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-			<Image />
-		</div>
-		<Link to="/blog/">Go to Blog</Link>
-	</Layout>
-);
-
-export default IndexPage;
+export default function Home() {
+	return (
+		<Layout>
+			<ContainerFullWidth>
+				<SEO title="Home" />
+				<PresentationText />
+				<HomeImage />
+				<SocialIcons />
+			</ContainerFullWidth>
+		</Layout>
+	);
+}
